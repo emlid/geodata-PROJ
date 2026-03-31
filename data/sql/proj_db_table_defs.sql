@@ -266,7 +266,8 @@ INSERT INTO builtin_authorities VALUES
     ('NKG'),
     ('NRCAN'),
     ('OGC'),
-    ('PROJ')
+    ('PROJ'),
+    ('EMLID')
 ;
 
 CREATE TABLE conversion_method(
