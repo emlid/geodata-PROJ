@@ -7,16 +7,12 @@ VALUES
     ('PROJ', 'EPSG_4937_TO_EPSG_5729_1', 'ETRS89 to LHN95 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5729', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'chgeo04_etrf.tif', 0),
     ('PROJ', 'EPSG_4937_TO_EPSG_5728_1', 'ETRS89 to LN02 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5728', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'chgeo04_HT_etrf.tif', 0),
     ('PROJ', 'EPSG_4937_TO_EPSG_5941_1', 'ETRS89 to NN2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5941', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'nn2000.gtx', 0),
-    ('PROJ', 'EPSG_4937_TO_EPSG_7837_1', 'ETRS89 to DHHN2016 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '7837', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'GCG2016.byn', 0),
-    ('PROJ', 'EPSG_4949_TO_EPSG_7700_1', 'LKS92 to Latvia 2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4949', 'EPSG', '7700', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'lv_14.tif', 0),
     ('PROJ', 'EPSG_4883_TO_EPSG_5779_1', 'Slovenia 1996 to SVS2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4883', 'EPSG', '5779', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'sloamg2000.tif', 0),
-    ('PROJ', 'EPSG_4883_TO_EPSG_8690_1', 'Slovenia 1996 to SVS2010 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4883', 'EPSG', '8690', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'svs2010.tif', 0),
     ('PROJ', 'EPSG_4955_TO_EPSG_6647_1', 'NAD83(CSRS) to CGVD2013(CGG2013) height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4955', 'EPSG', '6647', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'CGG2013n83.byn', 0),
     ('PROJ', 'EPSG_4955_TO_EPSG_9245_1', 'NAD83(CSRS) to CGVD2013(CGG2013a) height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4955', 'EPSG', '9245', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'CGG2013n83a.byn', 0),
     ('PROJ', 'EPSG_4179_TO_EPSG_4258_1', 'Pulkovo 1942(58) to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4179', 'EPSG', '4258', '0.03', 'EPSG', '8656', 'Latitude and longitude difference file', 'stereo70_etrs89A.gsb', 0),
     ('PROJ', 'EPSG_4889_TO_EPSG_5610_1', 'HTRS96 to HVRS71 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4889', 'EPSG', '5610', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'HTRS96_HRG2009.tif', 0),
     ('PROJ', 'EPSG_4237_TO_EPSG_4258_1', 'HD72 to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4237', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'etrs2eov_notowgs.gsb', 0),
-    ('PROJ', 'EPSG_4230_TO_EPSG_4258_1', 'ED50 to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4230', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'italy_ed50.tif', 0),
     ('PROJ', 'EPSG_4265_TO_EPSG_4258_1', 'Monte Mario to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4265', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'roma40.tif', 0);
 
 INSERT INTO "main"."usage"
@@ -27,17 +23,13 @@ VALUES
     ('EMLID', '1002', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5621_1', 'EPSG', '3293', 'EPSG', '1024'),
     ('EMLID', '1003', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5729_1', 'EPSG', '1286', 'EPSG', '1024'),
     ('EMLID', '1004', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5941_1', 'EPSG', '1352', 'EPSG', '1024'),
-    ('EMLID', '1005', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_7837_1', 'EPSG', '3339', 'EPSG', '1024'),
-    ('EMLID', '1006', 'grid_transformation', 'PROJ', 'EPSG_4949_TO_EPSG_7700_1', 'EPSG', '3268', 'EPSG', '1024'),
     ('EMLID', '1007', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_5779_1', 'EPSG', '3307', 'EPSG', '1024'),
-    ('EMLID', '1008', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_8690_1', 'EPSG', '3307', 'EPSG', '1024'),
     ('EMLID', '1009', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_6647_1', 'EPSG', '1061', 'EPSG', '1024'),
     ('EMLID', '1010', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_9245_1', 'EPSG', '1061', 'EPSG', '1024'),
     ('EMLID', '1011', 'grid_transformation', 'PROJ', 'EPSG_4179_TO_EPSG_4258_1', 'EPSG', '1197', 'EPSG', '1024'),
     ('EMLID', '1012', 'grid_transformation', 'PROJ', 'EPSG_4889_TO_EPSG_5610_1', 'EPSG', '3234', 'EPSG', '1024'),
     ('EMLID', '1013', 'grid_transformation', 'PROJ', 'EPSG_4237_TO_EPSG_4258_1', 'EPSG', '1119', 'EPSG', '1024'),
     ('EMLID', '1014', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5728_1', 'EPSG', '1286', 'EPSG', '1024'),
-    ('EMLID', '1015', 'grid_transformation', 'PROJ', 'EPSG_4230_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024'),
     ('EMLID', '1016', 'grid_transformation', 'PROJ', 'EPSG_4265_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024');
 
 INSERT INTO "main"."grid_alternatives"
@@ -48,15 +40,32 @@ VALUES
     ('chgeo04_etrf.tif', 'chgeo04_etrf.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/chgeo04_etrf.tif', '1', '1'),
     ('chgeo04_HT_etrf.tif', 'chgeo04_HT_etrf.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/chgeo04_HT_etrf.tif', '1', '1'),
     ('nn2000.gtx', 'nn2000-v2.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/nn2000-v2.tif', '1', '1'),
-    ('GCG2016.byn', 'GCG2016.mtif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/GCG2016.mtif', '1', '1'),
-    ('lv_14.tif', 'lv_14-v2.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/lv_14-v2.tif', '1', '1'),
     ('sloamg2000.tif', 'sloamg2000.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/sloamg2000.tif', '1', '1'),
-    ('svs2010.tif', 'svs2010.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/svs2010.tif', '1', '1'),
     ('stereo70_etrs89A.gsb', 'stereo70_etrs89A.gsb', 'NTv2', 'hgridshift', '0', 'http://files.emlid.com/reachview3/grids-tif/stereo70_etrs89A.gsb', '1', '1'),
     ('HTRS96_HRG2009.tif', 'HTRS96_HRG2009.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/HTRS96_HRG2009.tif', '1', '1'),
     ('etrs2eov_notowgs.gsb', 'etrs2eov_notowgs.gsb', 'NTv2', 'hgridshift', '0', 'http://files.emlid.com/reachview3/grids-tif/etrs2eov_notowgs.gsb', '1', '1'),
-    ('italy_ed50.tif', 'italy_ed50.tif', 'NTv2', 'hgridshift', '0', 'http://files.emlid.com/reachview3/grids-tif/italy_ed50.tif', '1', '1'),
     ('roma40.tif', 'roma40.tif', 'NTv2', 'hgridshift', '0', 'http://files.emlid.com/reachview3/grids-tif/roma40.tif', '1', '1');
+
+-- Retarget canonical authority grid names that already exist in grid_alternatives.sql to Emlid-hosted files.
+UPDATE "main"."grid_alternatives"
+SET "proj_grid_name" = 'GCG2016.mtif',
+    "url" = 'http://files.emlid.com/reachview3/grids-tif/GCG2016.mtif'
+WHERE "original_grid_name" = 'GCG2016.txt';
+
+UPDATE "main"."grid_alternatives"
+SET "proj_grid_name" = 'lv_14-v2.tif',
+    "url" = 'http://files.emlid.com/reachview3/grids-tif/lv_14-v2.tif'
+WHERE "original_grid_name" = 'LV''14.gri';
+
+UPDATE "main"."grid_alternatives"
+SET "proj_grid_name" = 'italy_ed50.tif',
+    "url" = 'http://files.emlid.com/reachview3/grids-tif/italy_ed50.tif'
+WHERE "original_grid_name" = 'SPED2ETV2.gsb';
+
+UPDATE "main"."grid_alternatives"
+SET "proj_grid_name" = 'svs2010.tif',
+    "url" = 'http://files.emlid.com/reachview3/grids-tif/svs2010.tif'
+WHERE "original_grid_name" = 'https://isgeoid.polimi.it/Geoid/Europe/Slovenia/public/Slovenia_2016_SLO_VRP2016_Koper_hybrQ_20221122.isg';
 
 
 -- Custom registry
