@@ -113,12 +113,12 @@ VALUES
 INSERT INTO "main"."usage"
 ("auth_name", "code", "object_table_name", "object_auth_name", "object_code", "extent_auth_name", "extent_code", "scope_auth_name", "scope_code")
 VALUES
-    ('EMLID', '4001', 'grid_transformation', 'PROJ', 'EPSG_6364_TO_CUSTOM_GGM10H_1', 'EPSG', '3278', 'EPSG', '1024'),
-    ('EMLID', '4002', 'grid_transformation', 'PROJ', 'EPSG_4951_TO_CUSTOM_LAS07H_1', 'EPSG', '3272', 'EPSG', '1024'),
-    ('EMLID', '4004', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_MN75H_1', 'EPSG', '3295', 'EPSG', '1024'),
-    ('EMLID', '4010', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_VITEL2014H_1', 'EPSG', '1119', 'EPSG', '1024'),
-    ('EMLID', '4011', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_EHT2014H_1', 'EPSG', '1119', 'EPSG', '1024'),
-    ('EMLID', '4012', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_ITG2009H_1', 'EPSG', '1127', 'EPSG', '1024');
+    ('EMLID', '4001', 'grid_transformation', 'EMLID', 'EPSG_6364_TO_CUSTOM_GGM10H_1', 'EPSG', '3278', 'EPSG', '1024'),
+    ('EMLID', '4002', 'grid_transformation', 'EMLID', 'EPSG_4951_TO_CUSTOM_LAS07H_1', 'EPSG', '3272', 'EPSG', '1024'),
+    ('EMLID', '4004', 'grid_transformation', 'EMLID', 'EPSG_4937_TO_CUSTOM_MN75H_1', 'EPSG', '3295', 'EPSG', '1024'),
+    ('EMLID', '4010', 'grid_transformation', 'EMLID', 'EPSG_4937_TO_CUSTOM_VITEL2014H_1', 'EPSG', '1119', 'EPSG', '1024'),
+    ('EMLID', '4011', 'grid_transformation', 'EMLID', 'EPSG_4937_TO_CUSTOM_EHT2014H_1', 'EPSG', '1119', 'EPSG', '1024'),
+    ('EMLID', '4012', 'grid_transformation', 'EMLID', 'EPSG_4937_TO_CUSTOM_ITG2009H_1', 'EPSG', '1127', 'EPSG', '1024');
 
 INSERT INTO "main"."grid_alternatives"
 ("original_grid_name", "proj_grid_name", "proj_grid_format", "proj_method", "inverse_direction", "url", "direct_download", "open_license")
