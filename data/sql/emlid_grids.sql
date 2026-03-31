@@ -22,23 +22,23 @@ VALUES
 INSERT INTO "main"."usage"
 ("auth_name", "code", "object_table_name", "object_auth_name", "object_code", "extent_auth_name", "extent_code", "scope_auth_name", "scope_code")
 VALUES
-    ('PROJ', '1000', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_3900_1', 'EPSG', '3333', 'EPSG', '1024'),
-    ('PROJ', '1001', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5717_1', 'EPSG', '3333', 'EPSG', '1024'),
-    ('PROJ', '1002', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5621_1', 'EPSG', '3293', 'EPSG', '1024'),
-    ('PROJ', '1003', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5729_1', 'EPSG', '1286', 'EPSG', '1024'),
-    ('PROJ', '1004', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5941_1', 'EPSG', '1352', 'EPSG', '1024'),
-    ('PROJ', '1005', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_7837_1', 'EPSG', '3339', 'EPSG', '1024'),
-    ('PROJ', '1006', 'grid_transformation', 'PROJ', 'EPSG_4949_TO_EPSG_7700_1', 'EPSG', '3268', 'EPSG', '1024'),
-    ('PROJ', '1007', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_5779_1', 'EPSG', '3307', 'EPSG', '1024'),
-    ('PROJ', '1008', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_8690_1', 'EPSG', '3307', 'EPSG', '1024'),
-    ('PROJ', '1009', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_6647_1', 'EPSG', '1061', 'EPSG', '1024'),
-    ('PROJ', '1010', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_9245_1', 'EPSG', '1061', 'EPSG', '1024'),
-    ('PROJ', '1011', 'grid_transformation', 'PROJ', 'EPSG_4179_TO_EPSG_4258_1', 'EPSG', '1197', 'EPSG', '1024'),
-    ('PROJ', '1012', 'grid_transformation', 'PROJ', 'EPSG_4889_TO_EPSG_5610_1', 'EPSG', '3234', 'EPSG', '1024'),
-    ('PROJ', '1013', 'grid_transformation', 'PROJ', 'EPSG_4237_TO_EPSG_4258_1', 'EPSG', '1119', 'EPSG', '1024'),
-    ('PROJ', '1014', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5728_1', 'EPSG', '1286', 'EPSG', '1024'),
-    ('PROJ', '1015', 'grid_transformation', 'PROJ', 'EPSG_4230_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024'),
-    ('PROJ', '1016', 'grid_transformation', 'PROJ', 'EPSG_4265_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024');
+    ('EPSG', '1000', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_3900_1', 'EPSG', '3333', 'EPSG', '1024'),
+    ('EPSG', '1001', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5717_1', 'EPSG', '3333', 'EPSG', '1024'),
+    ('EPSG', '1002', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5621_1', 'EPSG', '3293', 'EPSG', '1024'),
+    ('EPSG', '1003', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5729_1', 'EPSG', '1286', 'EPSG', '1024'),
+    ('EPSG', '1004', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5941_1', 'EPSG', '1352', 'EPSG', '1024'),
+    ('EPSG', '1005', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_7837_1', 'EPSG', '3339', 'EPSG', '1024'),
+    ('EPSG', '1006', 'grid_transformation', 'PROJ', 'EPSG_4949_TO_EPSG_7700_1', 'EPSG', '3268', 'EPSG', '1024'),
+    ('EPSG', '1007', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_5779_1', 'EPSG', '3307', 'EPSG', '1024'),
+    ('EPSG', '1008', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_8690_1', 'EPSG', '3307', 'EPSG', '1024'),
+    ('EPSG', '1009', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_6647_1', 'EPSG', '1061', 'EPSG', '1024'),
+    ('EPSG', '1010', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_9245_1', 'EPSG', '1061', 'EPSG', '1024'),
+    ('EPSG', '1011', 'grid_transformation', 'PROJ', 'EPSG_4179_TO_EPSG_4258_1', 'EPSG', '1197', 'EPSG', '1024'),
+    ('EPSG', '1012', 'grid_transformation', 'PROJ', 'EPSG_4889_TO_EPSG_5610_1', 'EPSG', '3234', 'EPSG', '1024'),
+    ('EPSG', '1013', 'grid_transformation', 'PROJ', 'EPSG_4237_TO_EPSG_4258_1', 'EPSG', '1119', 'EPSG', '1024'),
+    ('EPSG', '1014', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5728_1', 'EPSG', '1286', 'EPSG', '1024'),
+    ('EPSG', '1015', 'grid_transformation', 'PROJ', 'EPSG_4230_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024'),
+    ('EPSG', '1016', 'grid_transformation', 'PROJ', 'EPSG_4265_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024');
 
 INSERT INTO "main"."grid_alternatives"
 ("original_grid_name", "proj_grid_name", "proj_grid_format", "proj_method", "inverse_direction", "url", "direct_download", "open_license")
@@ -63,62 +63,62 @@ VALUES
 INSERT INTO "main"."vertical_datum"
 ("auth_name", "code", "name", "deprecated")
 VALUES
-    ('PROJ', 'GGM10D', 'GGM10 Vertical Datum', 0),
-    ('PROJ', 'LAS07D', 'LAS07 Vertical Datum', 0),
-    ('PROJ', 'MN75D', 'MN75 Vertical Datum', 0),
-    ('PROJ', 'VITEL2014D', 'Vitel 2014 Vertical Datum', 0),
-    ('PROJ', 'EHT2014D', 'EHT 2014 Vertical Datum', 0),
-    ('PROJ', 'ITG2009D', 'ITG 2009 Vertical Datum', 0);
+    ('EPSG', 'GGM10D', 'GGM10 Vertical Datum', 0),
+    ('EPSG', 'LAS07D', 'LAS07 Vertical Datum', 0),
+    ('EPSG', 'MN75D', 'MN75 Vertical Datum', 0),
+    ('EPSG', 'VITEL2014D', 'Vitel 2014 Vertical Datum', 0),
+    ('EPSG', 'EHT2014D', 'EHT 2014 Vertical Datum', 0),
+    ('EPSG', 'ITG2009D', 'ITG 2009 Vertical Datum', 0);
 
 INSERT INTO "main"."usage"
 ("auth_name", "code", "object_table_name", "object_auth_name", "object_code", "extent_auth_name", "extent_code", "scope_auth_name", "scope_code")
 VALUES
-    ('PROJ', '2001', 'vertical_datum', 'PROJ', 'GGM10D', 'EPSG', '3278', 'EPSG', '1024'),
-    ('PROJ', '2002', 'vertical_datum', 'PROJ', 'LAS07D', 'EPSG', '3272', 'EPSG', '1024'),
-    ('PROJ', '2004', 'vertical_datum', 'PROJ', 'MN75D', 'EPSG', '3295', 'EPSG', '1024'),
-    ('PROJ', '2006', 'vertical_datum', 'PROJ', 'VITEL2014D', 'EPSG', '1119', 'EPSG', '1024'),
-    ('PROJ', '2007', 'vertical_datum', 'PROJ', 'EHT2014D', 'EPSG', '1119', 'EPSG', '1024'),
-    ('PROJ', '2008', 'vertical_datum', 'PROJ', 'ITG2009D', 'EPSG', '1127', 'EPSG', '1024');
+    ('EPSG', '2001', 'vertical_datum', 'PROJ', 'GGM10D', 'EPSG', '3278', 'EPSG', '1024'),
+    ('EPSG', '2002', 'vertical_datum', 'PROJ', 'LAS07D', 'EPSG', '3272', 'EPSG', '1024'),
+    ('EPSG', '2004', 'vertical_datum', 'PROJ', 'MN75D', 'EPSG', '3295', 'EPSG', '1024'),
+    ('EPSG', '2006', 'vertical_datum', 'PROJ', 'VITEL2014D', 'EPSG', '1119', 'EPSG', '1024'),
+    ('EPSG', '2007', 'vertical_datum', 'PROJ', 'EHT2014D', 'EPSG', '1119', 'EPSG', '1024'),
+    ('EPSG', '2008', 'vertical_datum', 'PROJ', 'ITG2009D', 'EPSG', '1127', 'EPSG', '1024');
 
 INSERT INTO "main"."vertical_crs"
 ("auth_name", "code", "name", "coordinate_system_auth_name", "coordinate_system_code", "datum_auth_name", "datum_code", "deprecated")
 VALUES
-    ('PROJ', 'GGM10H', 'Mexico GGM10 height', 'EPSG', '6499', 'PROJ', 'GGM10D', 0),
-    ('PROJ', 'LAS07H', 'Lithuania LAS07 height', 'EPSG', '6499', 'PROJ', 'LAS07D', 0),
-    ('PROJ', 'MN75H', 'Romania MN75 height', 'EPSG', '6499', 'PROJ', 'MN75D', 0),
-    ('PROJ', 'VITEL2014H', 'Hungary VITEL2014 height', 'EPSG', '6499', 'PROJ', 'VITEL2014D', 0),
-    ('PROJ', 'EHT2014H', 'Hungary EHT2014 height', 'EPSG', '6499', 'PROJ', 'EHT2014D', 0),
-    ('PROJ', 'ITG2009H', 'Italy ITG2009 height', 'EPSG', '6499', 'PROJ', 'ITG2009D', 0);
+    ('EPSG', 'GGM10H', 'Mexico GGM10 height', 'EPSG', '6499', 'PROJ', 'GGM10D', 0),
+    ('EPSG', 'LAS07H', 'Lithuania LAS07 height', 'EPSG', '6499', 'PROJ', 'LAS07D', 0),
+    ('EPSG', 'MN75H', 'Romania MN75 height', 'EPSG', '6499', 'PROJ', 'MN75D', 0),
+    ('EPSG', 'VITEL2014H', 'Hungary VITEL2014 height', 'EPSG', '6499', 'PROJ', 'VITEL2014D', 0),
+    ('EPSG', 'EHT2014H', 'Hungary EHT2014 height', 'EPSG', '6499', 'PROJ', 'EHT2014D', 0),
+    ('EPSG', 'ITG2009H', 'Italy ITG2009 height', 'EPSG', '6499', 'PROJ', 'ITG2009D', 0);
 
 INSERT INTO "main"."usage"
 ("auth_name", "code", "object_table_name", "object_auth_name", "object_code", "extent_auth_name", "extent_code", "scope_auth_name", "scope_code")
 VALUES
-    ('PROJ', '3001', 'vertical_crs', 'PROJ', 'GGM10H', 'EPSG', '3278', 'EPSG', '1024'),
-    ('PROJ', '3002', 'vertical_crs', 'PROJ', 'LAS07H', 'EPSG', '3272', 'EPSG', '1024'),
-    ('PROJ', '3004', 'vertical_crs', 'PROJ', 'MN75H', 'EPSG', '3295', 'EPSG', '1024'),
-    ('PROJ', '3011', 'vertical_crs', 'PROJ', 'VITEL2014H', 'EPSG', '1119', 'EPSG', '1024'),
-    ('PROJ', '3012', 'vertical_crs', 'PROJ', 'EHT2014H', 'EPSG', '1119', 'EPSG', '1024'),
-    ('PROJ', '3013', 'vertical_crs', 'PROJ', 'ITG2009H', 'EPSG', '1127', 'EPSG', '1024');
+    ('EPSG', '3001', 'vertical_crs', 'EPSG', 'GGM10H', 'EPSG', '3278', 'EPSG', '1024'),
+    ('EPSG', '3002', 'vertical_crs', 'EPSG', 'LAS07H', 'EPSG', '3272', 'EPSG', '1024'),
+    ('EPSG', '3004', 'vertical_crs', 'EPSG', 'MN75H', 'EPSG', '3295', 'EPSG', '1024'),
+    ('EPSG', '3011', 'vertical_crs', 'EPSG', 'VITEL2014H', 'EPSG', '1119', 'EPSG', '1024'),
+    ('EPSG', '3012', 'vertical_crs', 'EPSG', 'EHT2014H', 'EPSG', '1119', 'EPSG', '1024'),
+    ('EPSG', '3013', 'vertical_crs', 'EPSG', 'ITG2009H', 'EPSG', '1127', 'EPSG', '1024');
 
 INSERT INTO "main"."grid_transformation"
 ("auth_name", "code", "name", "method_auth_name", "method_code", "method_name", "source_crs_auth_name", "source_crs_code", "target_crs_auth_name", "target_crs_code", "accuracy", "grid_param_auth_name", "grid_param_code", "grid_param_name", "grid_name", "deprecated")
 VALUES
-    ('PROJ', 'EPSG_6364_TO_CUSTOM_GGM10H_1', 'Mexico ITRF2008 to Mexico GGM10 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6364', 'PROJ', 'GGM10H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'GGM10.tif', 0),
-    ('PROJ', 'EPSG_4951_TO_CUSTOM_LAS07H_1', 'LKS94 to Lithuania LAS07 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4951', 'PROJ', 'LAS07H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'lit15g.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_CUSTOM_MN75H_1', 'ETRS89 to Romania MN75 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'PROJ', 'MN75H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'EGG97_QGRJ_SfASCII.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_CUSTOM_VITEL2014H_1', 'ETRS89 to Hungary VITEL2014 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'PROJ', 'VITEL2014H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'vitel2014.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_CUSTOM_EHT2014H_1', 'ETRS89 to Hungary EHT2014 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'PROJ', 'EHT2014H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'eht2014.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_CUSTOM_ITG2009H_1', 'ETRS89 to Italy ITG2009 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'PROJ', 'ITG2009H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'itg2009.tif', 0);
+    ('PROJ', 'EPSG_6364_TO_CUSTOM_GGM10H_1', 'Mexico ITRF2008 to Mexico GGM10 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6364', 'EPSG', 'GGM10H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'GGM10.tif', 0),
+    ('PROJ', 'EPSG_4951_TO_CUSTOM_LAS07H_1', 'LKS94 to Lithuania LAS07 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4951', 'EPSG', 'LAS07H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'lit15g.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_CUSTOM_MN75H_1', 'ETRS89 to Romania MN75 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', 'MN75H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'EGG97_QGRJ_SfASCII.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_CUSTOM_VITEL2014H_1', 'ETRS89 to Hungary VITEL2014 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', 'VITEL2014H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'vitel2014.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_CUSTOM_EHT2014H_1', 'ETRS89 to Hungary EHT2014 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', 'EHT2014H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'eht2014.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_CUSTOM_ITG2009H_1', 'ETRS89 to Italy ITG2009 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', 'ITG2009H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'itg2009.tif', 0);
 
 INSERT INTO "main"."usage"
 ("auth_name", "code", "object_table_name", "object_auth_name", "object_code", "extent_auth_name", "extent_code", "scope_auth_name", "scope_code")
 VALUES
-    ('PROJ', '4001', 'grid_transformation', 'PROJ', 'EPSG_6364_TO_CUSTOM_GGM10H_1', 'EPSG', '3278', 'EPSG', '1024'),
-    ('PROJ', '4002', 'grid_transformation', 'PROJ', 'EPSG_4951_TO_CUSTOM_LAS07H_1', 'EPSG', '3272', 'EPSG', '1024'),
-    ('PROJ', '4004', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_MN75H_1', 'EPSG', '3295', 'EPSG', '1024'),
-    ('PROJ', '4010', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_VITEL2014H_1', 'EPSG', '1119', 'EPSG', '1024'),
-    ('PROJ', '4011', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_EHT2014H_1', 'EPSG', '1119', 'EPSG', '1024'),
-    ('PROJ', '4012', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_ITG2009H_1', 'EPSG', '1127', 'EPSG', '1024');
+    ('EPSG', '4001', 'grid_transformation', 'PROJ', 'EPSG_6364_TO_CUSTOM_GGM10H_1', 'EPSG', '3278', 'EPSG', '1024'),
+    ('EPSG', '4002', 'grid_transformation', 'PROJ', 'EPSG_4951_TO_CUSTOM_LAS07H_1', 'EPSG', '3272', 'EPSG', '1024'),
+    ('EPSG', '4004', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_MN75H_1', 'EPSG', '3295', 'EPSG', '1024'),
+    ('EPSG', '4010', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_VITEL2014H_1', 'EPSG', '1119', 'EPSG', '1024'),
+    ('EPSG', '4011', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_EHT2014H_1', 'EPSG', '1119', 'EPSG', '1024'),
+    ('EPSG', '4012', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_ITG2009H_1', 'EPSG', '1127', 'EPSG', '1024');
 
 INSERT INTO "main"."grid_alternatives"
 ("original_grid_name", "proj_grid_name", "proj_grid_format", "proj_method", "inverse_direction", "url", "direct_download", "open_license")
