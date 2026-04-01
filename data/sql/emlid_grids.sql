@@ -1,44 +1,49 @@
+-- This patch: applies only if PROJ_ENABLE_PATCH=ON.
+-- _RESTRICTED_TO_VERTCRS allows overlap with existing EPSG grid_transformation rows, so final_consistency_checks.sql pass.
+
+INSERT OR IGNORE INTO builtin_authorities VALUES('CUSTOM');
+
 INSERT INTO "main"."grid_transformation"
 ("auth_name", "code", "name", "method_auth_name", "method_code", "method_name", "source_crs_auth_name", "source_crs_code", "target_crs_auth_name", "target_crs_code", "accuracy", "grid_param_auth_name", "grid_param_code", "grid_param_name", "grid_name", "deprecated")
 VALUES
-    ('PROJ', 'EPSG_4937_TO_EPSG_3900_1', 'ETRS89 to N2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '3900', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'N2000.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_EPSG_5717_1', 'ETRS89 to N60 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5717', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'N60.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_EPSG_5621_1', 'ETRS89 to EVRF2007 height, Poland (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5621', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'gugik-geoid2011-PL-EVRF2007-NH.txt', 0),
-    ('PROJ', 'EPSG_4937_TO_EPSG_5729_1', 'ETRS89 to LHN95 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5729', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'chgeo04_etrf.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_EPSG_5728_1', 'ETRS89 to LN02 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5728', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'chgeo04_HT_etrf.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_EPSG_5941_1', 'ETRS89 to NN2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5941', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'nn2000.gtx', 0),
-    ('PROJ', 'EPSG_4937_TO_EPSG_7837_1', 'ETRS89 to DHHN2016 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '7837', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'GCG2016.byn', 0),
-    ('PROJ', 'EPSG_4949_TO_EPSG_7700_1', 'LKS92 to Latvia 2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4949', 'EPSG', '7700', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'lv_14.tif', 0),
-    ('PROJ', 'EPSG_4883_TO_EPSG_5779_1', 'Slovenia 1996 to SVS2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4883', 'EPSG', '5779', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'sloamg2000.tif', 0),
-    ('PROJ', 'EPSG_4883_TO_EPSG_8690_1', 'Slovenia 1996 to SVS2010 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4883', 'EPSG', '8690', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'svs2010.tif', 0),
-    ('PROJ', 'EPSG_4955_TO_EPSG_6647_1', 'NAD83(CSRS) to CGVD2013(CGG2013) height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4955', 'EPSG', '6647', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'CGG2013n83.byn', 0),
-    ('PROJ', 'EPSG_4955_TO_EPSG_9245_1', 'NAD83(CSRS) to CGVD2013(CGG2013a) height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4955', 'EPSG', '9245', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'CGG2013n83a.byn', 0),
-    ('PROJ', 'EPSG_4179_TO_EPSG_4258_1', 'Pulkovo 1942(58) to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4179', 'EPSG', '4258', '0.03', 'EPSG', '8656', 'Latitude and longitude difference file', 'stereo70_etrs89A.gsb', 0),
-    ('PROJ', 'EPSG_4889_TO_EPSG_5610_1', 'HTRS96 to HVRS71 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4889', 'EPSG', '5610', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'HTRS96_HRG2009.tif', 0),
-    ('PROJ', 'EPSG_4237_TO_EPSG_4258_1', 'HD72 to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4237', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'etrs2eov_notowgs.gsb', 0),
-    ('PROJ', 'EPSG_4230_TO_EPSG_4258_1', 'ED50 to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4230', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'italy_ed50.tif', 0),
-    ('PROJ', 'EPSG_4265_TO_EPSG_4258_1', 'Monte Mario to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4265', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'roma40.tif', 0);
+    ('PROJ', 'EPSG_4937_TO_EPSG_3900_1_RESTRICTED_TO_VERTCRS', 'ETRS89 to N2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '3900', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'N2000.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_EPSG_5717_1_RESTRICTED_TO_VERTCRS', 'ETRS89 to N60 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5717', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'N60.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_EPSG_5621_1_RESTRICTED_TO_VERTCRS', 'ETRS89 to EVRF2007 height, Poland (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5621', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'gugik-geoid2011-PL-EVRF2007-NH.txt', 0),
+    ('PROJ', 'EPSG_4937_TO_EPSG_5729_1_RESTRICTED_TO_VERTCRS', 'ETRS89 to LHN95 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5729', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'chgeo04_etrf.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_EPSG_5728_1_RESTRICTED_TO_VERTCRS', 'ETRS89 to LN02 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5728', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'chgeo04_HT_etrf.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_EPSG_5941_1_RESTRICTED_TO_VERTCRS', 'ETRS89 to NN2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5941', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'nn2000.gtx', 0),
+    ('PROJ', 'EPSG_4937_TO_EPSG_7837_1_RESTRICTED_TO_VERTCRS', 'ETRS89 to DHHN2016 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '7837', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'GCG2016.byn', 0),
+    ('PROJ', 'EPSG_4949_TO_EPSG_7700_1_RESTRICTED_TO_VERTCRS', 'LKS92 to Latvia 2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4949', 'EPSG', '7700', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'lv_14.tif', 0),
+    ('PROJ', 'EPSG_4883_TO_EPSG_5779_1_RESTRICTED_TO_VERTCRS', 'Slovenia 1996 to SVS2000 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4883', 'EPSG', '5779', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'sloamg2000.tif', 0),
+    ('PROJ', 'EPSG_4883_TO_EPSG_8690_1_RESTRICTED_TO_VERTCRS', 'Slovenia 1996 to SVS2010 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4883', 'EPSG', '8690', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'svs2010.tif', 0),
+    ('PROJ', 'EPSG_4955_TO_EPSG_6647_1_RESTRICTED_TO_VERTCRS', 'NAD83(CSRS) to CGVD2013(CGG2013) height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4955', 'EPSG', '6647', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'CGG2013n83.byn', 0),
+    ('PROJ', 'EPSG_4955_TO_EPSG_9245_1_RESTRICTED_TO_VERTCRS', 'NAD83(CSRS) to CGVD2013(CGG2013a) height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4955', 'EPSG', '9245', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'CGG2013n83a.byn', 0),
+    ('PROJ', 'EPSG_4179_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'Pulkovo 1942(58) to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4179', 'EPSG', '4258', '0.03', 'EPSG', '8656', 'Latitude and longitude difference file', 'stereo70_etrs89A.gsb', 0),
+    ('PROJ', 'EPSG_4889_TO_EPSG_5610_1_RESTRICTED_TO_VERTCRS', 'HTRS96 to HVRS71 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4889', 'EPSG', '5610', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'HTRS96_HRG2009.tif', 0),
+    ('PROJ', 'EPSG_4237_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'HD72 to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4237', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'etrs2eov_notowgs.gsb', 0),
+    ('PROJ', 'EPSG_4230_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'ED50 to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4230', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'italy_ed50.tif', 0),
+    ('PROJ', 'EPSG_4265_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'Monte Mario to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4265', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'roma40.tif', 0);
 
 INSERT INTO "main"."usage"
 ("auth_name", "code", "object_table_name", "object_auth_name", "object_code", "extent_auth_name", "extent_code", "scope_auth_name", "scope_code")
 VALUES
-    ('CUSTOM', '1000', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_3900_1', 'EPSG', '3333', 'EPSG', '1024'),
-    ('CUSTOM', '1001', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5717_1', 'EPSG', '3333', 'EPSG', '1024'),
-    ('CUSTOM', '1002', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5621_1', 'EPSG', '3293', 'EPSG', '1024'),
-    ('CUSTOM', '1003', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5729_1', 'EPSG', '1286', 'EPSG', '1024'),
-    ('CUSTOM', '1004', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5941_1', 'EPSG', '1352', 'EPSG', '1024'),
-    ('CUSTOM', '1005', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_7837_1', 'EPSG', '3339', 'EPSG', '1024'),
-    ('CUSTOM', '1006', 'grid_transformation', 'PROJ', 'EPSG_4949_TO_EPSG_7700_1', 'EPSG', '3268', 'EPSG', '1024'),
-    ('CUSTOM', '1007', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_5779_1', 'EPSG', '3307', 'EPSG', '1024'),
-    ('CUSTOM', '1008', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_8690_1', 'EPSG', '3307', 'EPSG', '1024'),
-    ('CUSTOM', '1009', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_6647_1', 'EPSG', '1061', 'EPSG', '1024'),
-    ('CUSTOM', '1010', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_9245_1', 'EPSG', '1061', 'EPSG', '1024'),
-    ('CUSTOM', '1011', 'grid_transformation', 'PROJ', 'EPSG_4179_TO_EPSG_4258_1', 'EPSG', '1197', 'EPSG', '1024'),
-    ('CUSTOM', '1012', 'grid_transformation', 'PROJ', 'EPSG_4889_TO_EPSG_5610_1', 'EPSG', '3234', 'EPSG', '1024'),
-    ('CUSTOM', '1013', 'grid_transformation', 'PROJ', 'EPSG_4237_TO_EPSG_4258_1', 'EPSG', '1119', 'EPSG', '1024'),
-    ('CUSTOM', '1014', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5728_1', 'EPSG', '1286', 'EPSG', '1024'),
-    ('CUSTOM', '1015', 'grid_transformation', 'PROJ', 'EPSG_4230_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024'),
-    ('CUSTOM', '1016', 'grid_transformation', 'PROJ', 'EPSG_4265_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024');
+    ('CUSTOM', '1000', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_3900_1_RESTRICTED_TO_VERTCRS', 'EPSG', '3333', 'EPSG', '1024'),
+    ('CUSTOM', '1001', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5717_1_RESTRICTED_TO_VERTCRS', 'EPSG', '3333', 'EPSG', '1024'),
+    ('CUSTOM', '1002', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5621_1_RESTRICTED_TO_VERTCRS', 'EPSG', '3293', 'EPSG', '1024'),
+    ('CUSTOM', '1003', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5729_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1286', 'EPSG', '1024'),
+    ('CUSTOM', '1004', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5941_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1352', 'EPSG', '1024'),
+    ('CUSTOM', '1005', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_7837_1_RESTRICTED_TO_VERTCRS', 'EPSG', '3339', 'EPSG', '1024'),
+    ('CUSTOM', '1006', 'grid_transformation', 'PROJ', 'EPSG_4949_TO_EPSG_7700_1_RESTRICTED_TO_VERTCRS', 'EPSG', '3268', 'EPSG', '1024'),
+    ('CUSTOM', '1007', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_5779_1_RESTRICTED_TO_VERTCRS', 'EPSG', '3307', 'EPSG', '1024'),
+    ('CUSTOM', '1008', 'grid_transformation', 'PROJ', 'EPSG_4883_TO_EPSG_8690_1_RESTRICTED_TO_VERTCRS', 'EPSG', '3307', 'EPSG', '1024'),
+    ('CUSTOM', '1009', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_6647_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1061', 'EPSG', '1024'),
+    ('CUSTOM', '1010', 'grid_transformation', 'PROJ', 'EPSG_4955_TO_EPSG_9245_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1061', 'EPSG', '1024'),
+    ('CUSTOM', '1011', 'grid_transformation', 'PROJ', 'EPSG_4179_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1197', 'EPSG', '1024'),
+    ('CUSTOM', '1012', 'grid_transformation', 'PROJ', 'EPSG_4889_TO_EPSG_5610_1_RESTRICTED_TO_VERTCRS', 'EPSG', '3234', 'EPSG', '1024'),
+    ('CUSTOM', '1013', 'grid_transformation', 'PROJ', 'EPSG_4237_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1119', 'EPSG', '1024'),
+    ('CUSTOM', '1014', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5728_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1286', 'EPSG', '1024'),
+    ('CUSTOM', '1015', 'grid_transformation', 'PROJ', 'EPSG_4230_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1127', 'EPSG', '1024'),
+    ('CUSTOM', '1016', 'grid_transformation', 'PROJ', 'EPSG_4265_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1127', 'EPSG', '1024');
 
 INSERT INTO "main"."grid_alternatives"
 ("original_grid_name", "proj_grid_name", "proj_grid_format", "proj_method", "inverse_direction", "url", "direct_download", "open_license")
@@ -134,20 +139,20 @@ VALUES
 -- Otherwise, the Slovak transformation is used in some parts of Czechia, leading to inaccurate results. It affects only the legacy registry,
 -- so in the new one, the Slovak transformation works accurately, while for Czech we don't have this transformation in the new registry yet.
 UPDATE "main"."grid_transformation"
-SET "accuracy" = "0.051"
-WHERE ("auth_name" = "EPSG" AND "code" = "8361") OR ("auth_name" = "PROJ" AND "code" = "EPSG_8361_RESTRICTED_TO_VERTCRS");
+SET "accuracy" = 0.051
+WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361_RESTRICTED_TO_VERTCRS');
 
 -- Update the extend for Czechia to transform point correctly near the south border.
 UPDATE "main"."extent"
-SET "south_lat" = "48.55"
-WHERE "auth_name" = "EPSG" AND "code" = "1079";
+SET "south_lat" = 48.55
+WHERE "auth_name" = 'EPSG' AND "code" = '1079';
 
 
 -- Update the name for Czech CS according to the local requirements
 UPDATE "main"."projected_crs"
-SET "name" = "S-JTSK / Krovak v1710"
-WHERE "auth_name" = "EPSG" AND "code" = "5514";
+SET "name" = 'S-JTSK / Krovak v1710'
+WHERE "auth_name" = 'EPSG' AND "code" = '5514';
 
 UPDATE "main"."vertical_crs"
-SET "name" = "Czech_CR-2005_v1005"
-WHERE "auth_name" = "EPSG" AND "code" = "8357";
+SET "name" = 'Czech_CR-2005_v1005'
+WHERE "auth_name" = 'EPSG' AND "code" = '8357';

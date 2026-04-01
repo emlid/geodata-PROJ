@@ -57,13 +57,17 @@ list(APPEND SQL_FILES
   "${SQL_DIR}/iau.sql"
   "${SQL_DIR}/nrcan.sql"
   "${SQL_DIR}/transformations_czechia.sql"
+)
+if(PROJ_ENABLE_PATCH)
+  list(APPEND SQL_FILES "${SQL_DIR}/emlid_grids.sql")
+endif()
+list(APPEND SQL_FILES
   "${SQL_DIR}/grid_alternatives.sql"
   "${SQL_DIR}/grid_alternatives_generated_noaa.sql"
   "${SQL_DIR}/nadcon5_concatenated_operations.sql"
   "${SQL_DIR}/wgs84_realizations_concatenated_operations.sql"
   "${SQL_DIR}/customizations.sql"
   "${SQL_DIR}/nkg_post_customizations.sql"
-  "${SQL_DIR}/emlid_grids.sql"
 )
 
 if (PROJ_DB_EXTRA_VALIDATION)

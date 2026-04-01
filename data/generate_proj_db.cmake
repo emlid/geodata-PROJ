@@ -1,3 +1,7 @@
+if(NOT DEFINED PROJ_ENABLE_PATCH)
+  set(PROJ_ENABLE_PATCH OFF)
+endif()
+
 function(cat IN_FILE OUT_FILE)
   file(READ ${IN_FILE} CONTENTS)
   file(APPEND ${OUT_FILE} "${CONTENTS}")
