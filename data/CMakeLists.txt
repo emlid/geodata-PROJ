@@ -36,7 +36,7 @@ option(PROJ_ENABLE_PATCH
 
 include(sql_filelist.cmake)
 
-set(PROJ_DB_SQL_EXPECTED_MD5 "42f25a34a9a3de87bd021b9f35b07093")
+set(PROJ_DB_SQL_EXPECTED_MD5 "d68b87128a9c01701dcdc26366ee2968")
 
 add_custom_command(
   OUTPUT ${PROJ_DB}

@@ -414,9 +414,12 @@ FOR EACH ROW BEGIN
                           NEW.target_crs_auth_name = crs.auth_name AND
                           NEW.target_crs_code = crs.code);
 
+    -- PROJ registry entries may use EPSG geographic 2D as source for geoid-height grids (EPSG-style pseudo-3D),
+    -- so product patches can keep canonical EPSG CRS codes and still override grids / URLs.
     SELECT RAISE(ABORT, 'insert on grid_transformation violates constraint: grid_transformation with Geographic3D to GravityRelatedHeight or Geog3D to Geog2D+XXX must have its source_crs in geodetic_crs table with type = ''geographic 3D''')
         WHERE NEW.deprecated = 0 AND
               (NEW.method_name LIKE 'Geographic3D to %' OR NEW.method_name LIKE 'Geog3D to %') AND
+              NOT (NEW.auth_name = 'PROJ' AND NEW.method_name LIKE 'Geographic3D to GravityRelatedHeight%') AND
               NOT EXISTS (SELECT 1 FROM geodetic_crs crs WHERE
                           NEW.source_crs_auth_name = crs.auth_name AND
                           NEW.source_crs_code = crs.code AND
