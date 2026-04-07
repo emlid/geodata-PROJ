@@ -32,7 +32,7 @@ set(PROJ_DB "${CMAKE_CURRENT_BINARY_DIR}/proj.db")
 
 option(PROJ_ENABLE_PATCH
   " APPEND THE PATCH WITH CUSTOM CRS to proj.db  Excluded when PROJ_ENABLE_PATCH=OFF."
-  OFF)
+  ON)
 
 option(PROJ_DB_FINAL_CONSISTENCY_CHECKS
   "Run final_consistency_checks.sql when building proj.db (slower; fails on intentional PROJ/EPSG grid duplicates unless codes use _RESTRICTED_TO_VERTCRS)."
@@ -41,7 +41,7 @@ option(PROJ_DB_FINAL_CONSISTENCY_CHECKS
 set(PROJ_DB_EXTRA_VALIDATION ${PROJ_DB_FINAL_CONSISTENCY_CHECKS})
 include(sql_filelist.cmake)
 
-set(PROJ_DB_SQL_EXPECTED_MD5 "e0922b19b6c4e44a1c490244541c659d")
+set(PROJ_DB_SQL_EXPECTED_MD5 "fccb13d3a060f3ec5d95f25912132da8")
 
 add_custom_command(
   OUTPUT ${PROJ_DB}
