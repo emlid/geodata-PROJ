@@ -22,7 +22,8 @@ VALUES
     ('PROJ', 'EPSG_4889_TO_EPSG_5610_1_RESTRICTED_TO_VERTCRS', 'HTRS96 to HVRS71 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4889', 'EPSG', '5610', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'HTRS96_HRG2009.tif', 0),
     ('PROJ', 'EPSG_4237_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'HD72 to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4237', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'etrs2eov_notowgs.gsb', 0),
     ('PROJ', 'EPSG_4230_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'ED50 to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4230', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'italy_ed50.tif', 0),
-    ('PROJ', 'EPSG_4265_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'Monte Mario to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4265', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'roma40.tif', 0);
+    ('PROJ', 'EPSG_4265_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'Monte Mario to ETRS89 (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4265', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'roma40.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_EPSG_5705_1_RESTRICTED_TO_VERTCRS', 'ETRS89 to Baltic 1977 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5705', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'GEORG12.tif', 0);
 
 INSERT INTO "main"."usage"
 ("auth_name", "code", "object_table_name", "object_auth_name", "object_code", "extent_auth_name", "extent_code", "scope_auth_name", "scope_code")
@@ -43,7 +44,8 @@ VALUES
     ('CUSTOM', '1013', 'grid_transformation', 'PROJ', 'EPSG_4237_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1119', 'EPSG', '1024'),
     ('CUSTOM', '1014', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5728_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1286', 'EPSG', '1024'),
     ('CUSTOM', '1015', 'grid_transformation', 'PROJ', 'EPSG_4230_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1127', 'EPSG', '1024'),
-    ('CUSTOM', '1016', 'grid_transformation', 'PROJ', 'EPSG_4265_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1127', 'EPSG', '1024');
+    ('CUSTOM', '1016', 'grid_transformation', 'PROJ', 'EPSG_4265_TO_EPSG_4258_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1127', 'EPSG', '1024'),
+    ('CUSTOM', '1017', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5705_1_RESTRICTED_TO_VERTCRS', 'EPSG', '3251', 'EPSG', '1024');
 
 INSERT INTO "main"."grid_alternatives"
 ("original_grid_name", "proj_grid_name", "proj_grid_format", "proj_method", "inverse_direction", "url", "direct_download", "open_license")
@@ -61,7 +63,8 @@ VALUES
     ('HTRS96_HRG2009.tif', 'HTRS96_HRG2009.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/HTRS96_HRG2009.tif', '1', '1'),
     ('etrs2eov_notowgs.gsb', 'etrs2eov_notowgs.gsb', 'NTv2', 'hgridshift', '0', 'http://files.emlid.com/reachview3/grids-tif/etrs2eov_notowgs.gsb', '1', '1'),
     ('italy_ed50.tif', 'italy_ed50.tif', 'NTv2', 'hgridshift', '0', 'http://files.emlid.com/reachview3/grids-tif/italy_ed50.tif', '1', '1'),
-    ('roma40.tif', 'roma40.tif', 'NTv2', 'hgridshift', '0', 'http://files.emlid.com/reachview3/grids-tif/roma40.tif', '1', '1');
+    ('roma40.tif', 'roma40.tif', 'NTv2', 'hgridshift', '0', 'http://files.emlid.com/reachview3/grids-tif/roma40.tif', '1', '1'),
+    ('GEORG12.tif', 'GEORG12.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/GEORG12.tif', '1', '1');
 
 
 -- Custom registry
@@ -134,6 +137,236 @@ VALUES
     ('vitel2014.tif', 'vitel2014.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/vitel2014.tif', '1', '1'),
     ('eht2014.tif', 'eht2014.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/eht2014.tif', '1', '1'),
     ('itg2009.tif', 'itg2009.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/itg2009.tif', '1', '1');
+
+-- Regional patches (from ReachView3 geodata-core build-scripts/sql; EPSG-target geoids use _RESTRICTED_TO_VERTCRS where needed)
+
+INSERT INTO "main"."vertical_datum"
+("auth_name", "code", "name", "deprecated")
+VALUES
+    ('CUSTOM', 'HBG18D', 'HBG18D Vertical Datum', 0),
+    ('CUSTOM', 'MAPGEO2015D', 'MAPGEO2015 Vertical Datum', 0),
+    ('CUSTOM', 'HGEOHNOR2020D', 'hgeoHNOR2020 Vertical Datum', 0),
+    ('CUSTOM', 'GEOCOL2004D', 'GEOCOL2004 Vertical Datum', 0),
+    ('CUSTOM', 'GEODAZ2014D', 'GEODAZ2014 Vertical Datum', 0),
+    ('CUSTOM', 'GEODPT08D', 'GEODPT08 Vertical Datum', 0),
+    ('CUSTOM', 'SAGEOID2010D', 'South Africa SAGEOID2010 Vertical Datum', 0),
+    ('CUSTOM', 'KNGEOID13D', 'South Korea KNGEOID13 Vertical Datum', 0),
+    ('CUSTOM', 'KNGEOID14D', 'South Korea KNGEOID14 Vertical Datum', 0),
+    ('CUSTOM', 'KNGEOID18D', 'South Korea KNGEOID18 Vertical Datum', 0),
+    ('CUSTOM', 'NAVD88G12BD', 'North American Vertical Datum 1988 (GEOID12B)', 0);
+
+INSERT INTO "main"."vertical_crs"
+("auth_name", "code", "name", "coordinate_system_auth_name", "coordinate_system_code", "datum_auth_name", "datum_code", "deprecated")
+VALUES
+    ('CUSTOM', 'HBG18H', 'Belgium HBG18 height', 'EPSG', '6499', 'CUSTOM', 'HBG18D', 0),
+    ('CUSTOM', 'MAPGEO2015H', 'Brazil MAPGEO2015 height', 'EPSG', '6499', 'CUSTOM', 'MAPGEO2015D', 0),
+    ('CUSTOM', 'HGEOHNOR2020H', 'Brazil hgeoHNOR2020 height', 'EPSG', '6499', 'CUSTOM', 'HGEOHNOR2020D', 0),
+    ('CUSTOM', 'GEOCOL2004H', 'Colombia GeoCol2004 height', 'EPSG', '6499', 'CUSTOM', 'GEOCOL2004D', 0),
+    ('CUSTOM', 'NGFIGN69RAF09H', 'NGF-IGN69(RAF09) height', 'EPSG', '6499', 'EPSG', '5119', 0),
+    ('CUSTOM', 'NGFIGN69RAF18BH', 'NGF-IGN69(RAF18B) height', 'EPSG', '6499', 'EPSG', '5119', 0),
+    ('CUSTOM', 'NGFIGN69RAF20H', 'NGF-IGN69(RAF20) height', 'EPSG', '6499', 'EPSG', '5119', 0),
+    ('CUSTOM', 'GEODAZ2014H', 'Portugal GEODAZ2014D height', 'EPSG', '6499', 'CUSTOM', 'GEODAZ2014D', 0),
+    ('CUSTOM', 'GEODPT08H', 'Portugal GEODPT08 height', 'EPSG', '6499', 'CUSTOM', 'GEODPT08D', 0),
+    ('CUSTOM', 'SAGEOID2010H', 'South Africa SAGEOID2010 height', 'EPSG', '6499', 'CUSTOM', 'SAGEOID2010D', 0),
+    ('CUSTOM', 'KNGEOID13H', 'South Korea KNGEOID13 height', 'EPSG', '6499', 'CUSTOM', 'KNGEOID13D', 0),
+    ('CUSTOM', 'KNGEOID14H', 'South Korea KNGEOID14 height', 'EPSG', '6499', 'CUSTOM', 'KNGEOID14D', 0),
+    ('CUSTOM', 'KNGEOID18H', 'South Korea KNGEOID18 height', 'EPSG', '6499', 'CUSTOM', 'KNGEOID18D', 0),
+    ('CUSTOM', 'NAVD88G12BH', 'NAVD88(GEOID12B) height', 'EPSG', '6499', 'CUSTOM', 'NAVD88G12BD', 0),
+    ('CUSTOM', 'NAVD88G12BFTUSH', 'NAVD88(GEOID12B) height (ftUS)', 'EPSG', '6497', 'CUSTOM', 'NAVD88G12BD', 0),
+    ('CUSTOM', 'NAVD88G12BFTH', 'NAVD88(GEOID12B) height (ft)', 'EPSG', '1030', 'CUSTOM', 'NAVD88G12BD', 0),
+    ('CUSTOM', 'PRVD02G12BH', 'PRVD02(GEOID12B) height', 'EPSG', '6499', 'EPSG', '1123', 0),
+    ('CUSTOM', 'VIVD09G12BH', 'VIVD09(GEOID12B) height', 'EPSG', '6499', 'EPSG', '1124', 0);
+
+INSERT INTO "main"."grid_transformation"
+("auth_name", "code", "name", "method_auth_name", "method_code", "method_name", "source_crs_auth_name", "source_crs_code", "target_crs_auth_name", "target_crs_code", "accuracy", "grid_param_auth_name", "grid_param_code", "grid_param_name", "grid_name", "deprecated")
+VALUES
+    ('PROJ', 'EPSG_4937_TO_CUSTOM_HBG18H_1', 'ETRS89 to Belgium HBG18H height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'CUSTOM', 'HBG18H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'HBG18.tif', 0),
+    ('PROJ', 'EPSG_4989_TO_CUSTOM_MAPGEO2015H_1', 'SIRGAS 2000 to Brazil MAPGEO2015 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4989', 'CUSTOM', 'MAPGEO2015H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'MAPGEO2015_sirgas.tif', 0),
+    ('PROJ', 'EPSG_4989_TO_CUSTOM_HGEOHNOR2020H_1', 'SIRGAS 2000 to Brazil hgeoHNOR2020 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4989', 'CUSTOM', 'HGEOHNOR2020H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'hgeoHNOR2020.tif', 0),
+    ('PROJ', 'EPSG_4686_TO_CUSTOM_GEOCOL2004H_1', 'MAGNA-SIRGAS to Colombia GeoCol2004 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4686', 'CUSTOM', 'GEOCOL2004H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'geocol_2004.tif', 0),
+    ('PROJ', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF09H_1', 'RGF93 to NGF-IGN69(RAF09) height (1)', 'EPSG', '1073', 'Geographic3D to GravityRelatedHeight (IGN2009)', 'EPSG', '4965', 'CUSTOM', 'NGFIGN69RAF09H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'RAF09.mnt', 0),
+    ('PROJ', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF18BH_1', 'RGF93 to NGF-IGN69(RAF18B) height (1)', 'EPSG', '1073', 'Geographic3D to GravityRelatedHeight (IGN2009)', 'EPSG', '4965', 'CUSTOM', 'NGFIGN69RAF18BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'RAF18B.tif', 0),
+    ('PROJ', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF20H_1', 'RGF93 to NGF-IGN69(RAF20) height (1)', 'EPSG', '1073', 'Geographic3D to GravityRelatedHeight (IGN2009)', 'EPSG', '4965', 'CUSTOM', 'NGFIGN69RAF20H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'RAF20.tif', 0),
+    ('PROJ', 'EPSG_5013_TO_CUSTOM_GEODAZ2014H_1', 'PTRA08 to Portugal GEODAZ2014 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '5013', 'CUSTOM', 'GEODAZ2014H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'GeodAz2014.tif', 0),
+    ('PROJ', 'EPSG_4937_TO_CUSTOM_GEODPT08H_1', 'ETRS89 to Portugal GEODPT08 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'CUSTOM', 'GEODPT08H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'geodPT08.tif', 0),
+    ('PROJ', 'EPSG_4148_TO_CUSTOM_SAGEOID2010H_1', 'Hartebeesthoek94 to South Africa SAGEOID2010 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4148', 'CUSTOM', 'SAGEOID2010H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'SAGEOID2010.tif', 0),
+    ('PROJ', 'EPSG_4927_TO_CUSTOM_KNGEOID13H_1', 'Korea 2000 to South Korea KNGEOID13 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4927', 'CUSTOM', 'KNGEOID13H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'kngeoid13.tif', 0),
+    ('PROJ', 'EPSG_4927_TO_CUSTOM_KNGEOID14H_1', 'Korea 2000 to South Korea KNGEOID14 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4927', 'CUSTOM', 'KNGEOID14H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'kngeoid14.tif', 0),
+    ('PROJ', 'EPSG_4927_TO_CUSTOM_KNGEOID18H_1', 'Korea 2000 to South Korea KNGEOID18 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4927', 'CUSTOM', 'KNGEOID18H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'kngeoid18.tif', 0),
+    ('PROJ', 'EPSG_6319_TO_CUSTOM_NAVD88G12BH_1', 'NAD83(2011) to NAVD88(GEOID12B) height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6319', 'CUSTOM', 'NAVD88G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bu0.bin', 0),
+    ('PROJ', 'EPSG_6319_TO_CUSTOM_NAVD88G12BH_2', 'NAD83(2011) to NAVD88(GEOID12B) height (2)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6319', 'CUSTOM', 'NAVD88G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012ba0.bin', 0),
+    ('PROJ', 'EPSG_6319_TO_CUSTOM_PRVD02G12BH_1', 'NAD83(2011) to PRVD02(GEOID12B) height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6319', 'CUSTOM', 'PRVD02G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bp0.bin', 0),
+    ('PROJ', 'EPSG_6319_TO_CUSTOM_VIVD09G12BH_1', 'NAD83(2011) to VIVD09(GEOID12B) height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6319', 'CUSTOM', 'VIVD09G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bp0.bin', 0),
+    ('PROJ', 'EPSG_6322_TO_EPSG_5703_1_RESTRICTED_TO_VERTCRS', 'NAD83(PA11) to NAVD88 height, Hawaii (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6322', 'EPSG', '5703', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bh0.bin', 0),
+    ('PROJ', 'EPSG_6322_TO_CUSTOM_NAVD88G12BH_1', 'NAD83(PA11) to NAVD88(GEOID12B) height, Hawaii (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6322', 'CUSTOM', 'NAVD88G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bh0.bin', 0);
+
+INSERT INTO "main"."other_transformation"
+("auth_name", "code", "name", "method_auth_name", "method_code", "method_name", "source_crs_auth_name", "source_crs_code", "target_crs_auth_name", "target_crs_code", "param1_auth_name", "param1_code", "param1_name", "param1_value", "param1_uom_auth_name", "param1_uom_code", "deprecated")
+VALUES
+    ('PROJ', 'CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTUSH', 'NAVD88(GEOID12B) height to NAVD88(GEOID12B) height (ftUS)', 'EPSG', '1069', 'Change of Vertical Unit', 'CUSTOM', 'NAVD88G12BH', 'CUSTOM', 'NAVD88G12BFTUSH', 'EPSG', '1051', 'Unit conversion scalar', 3.28083333333333, 'EPSG', '9201', 0),
+    ('PROJ', 'CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTH', 'NAVD88(GEOID12B) height to NAVD88(GEOID12B) height (ft)', 'EPSG', '1069', 'Change of Vertical Unit', 'CUSTOM', 'NAVD88G12BH', 'CUSTOM', 'NAVD88G12BFTH', 'EPSG', '1051', 'Unit conversion scalar', 3.28083989501312, 'EPSG', '9201', 0);
+
+INSERT INTO "main"."conversion_table"
+("auth_name", "code", "name", "method_auth_name", "method_code", "param1_auth_name", "param1_code", "param1_value", "param1_uom_auth_name", "param1_uom_code", "param2_auth_name", "param2_code", "param2_value", "param2_uom_auth_name", "param2_uom_code", "param3_auth_name", "param3_code", "param3_value", "param3_uom_auth_name", "param3_uom_code", "param4_auth_name", "param4_code", "param4_value", "param4_uom_auth_name", "param4_uom_code", "param5_auth_name", "param5_code", "param5_value", "param5_uom_auth_name", "param5_uom_code", "deprecated")
+VALUES
+    ('CUSTOM', 'LAMBC_GREENWICH', 'Lamber Corse (Greenwich)', 'EPSG', '9801', 'EPSG', '8801', '42.165','EPSG', '9102', 'EPSG', '8802', '2.33722916666667', 'EPSG', '9102', 'EPSG', '8805', '0.99994471', 'EPSG', '9201', 'EPSG', '8806', '234.358', 'EPSG', '9001', 'EPSG', '8807', '185861.369', 'EPSG', '9001', 0);
+
+INSERT INTO "main"."projected_crs"
+("auth_name", "code", "name", "coordinate_system_auth_name", "coordinate_system_code", "geodetic_crs_auth_name", "geodetic_crs_code", "conversion_auth_name", "conversion_code", "deprecated")
+VALUES
+    ('CUSTOM', 'NTF_LAMBC', 'NTF / Lambert Corse', 'EPSG', '4499', 'EPSG', '4275', 'CUSTOM', 'LAMBC_GREENWICH', 0);
+
+INSERT INTO "main"."geodetic_datum"
+("auth_name", "code", "name", "ellipsoid_auth_name", "ellipsoid_code", "prime_meridian_auth_name", "prime_meridian_code", "deprecated")
+VALUES
+    ('CUSTOM', 'HTRS07D', 'HTRS07 Datum', 'EPSG', '7019', 'EPSG', '8901', 0),
+    ('CUSTOM', 'GGRS87APPROXD', 'GGRS87 Approx. Datum', 'EPSG', '7019', 'EPSG', '8901', 0);
+
+INSERT INTO "main"."vertical_datum"
+("auth_name", "code", "name", "deprecated")
+VALUES
+    ('CUSTOM', 'GREEKGEOID2010D', 'GREEKGEOID2010 Vertical Datum', 0);
+
+INSERT INTO "main"."geodetic_crs"
+("auth_name", "code", "name", "type", "coordinate_system_auth_name", "coordinate_system_code", "datum_auth_name", "datum_code", "deprecated")
+VALUES
+    ('CUSTOM', 'HTRS07', 'HTRS07', 'geographic 2D', 'EPSG', '6422', 'CUSTOM', 'HTRS07D', 0),
+    ('CUSTOM', 'HTRS07_ECEF', 'HTRS07', 'geocentric', 'EPSG', '6500', 'CUSTOM', 'HTRS07D', 0),
+    ('CUSTOM', 'HTRS07_3D', 'HTRS07', 'geographic 3D', 'EPSG', '6423', 'CUSTOM', 'HTRS07D', 0),
+    ('CUSTOM', 'GGRS87APPROX', 'GGRS87 Approx.', 'geographic 2D', 'EPSG', '6422', 'CUSTOM', 'GGRS87APPROXD', 0);
+
+INSERT INTO "main"."vertical_crs"
+("auth_name", "code", "name", "coordinate_system_auth_name", "coordinate_system_code", "datum_auth_name", "datum_code", "deprecated")
+VALUES
+    ('CUSTOM', 'GREEKGEOID2010H', 'Greece GREEKGEOID2010 height', 'EPSG', '6499', 'CUSTOM', 'GREEKGEOID2010D', 0);
+
+INSERT INTO "main"."conversion_table"
+("auth_name", "code", "name", "method_auth_name", "method_code", "param1_auth_name", "param1_code", "param1_value", "param1_uom_auth_name", "param1_uom_code", "param2_auth_name", "param2_code", "param2_value", "param2_uom_auth_name", "param2_uom_code", "param3_auth_name", "param3_code", "param3_value", "param3_uom_auth_name", "param3_uom_code", "param4_auth_name", "param4_code", "param4_value", "param4_uom_auth_name", "param4_uom_code", "param5_auth_name", "param5_code", "param5_value", "param5_uom_auth_name", "param5_uom_code", "deprecated")
+VALUES
+    ('CUSTOM', 'TM07', 'TM07', 'EPSG', 9807, 'EPSG', '8801', 0.0, 'EPSG', '9102', 'EPSG', '8802', 24.0, 'EPSG', '9102', 'EPSG', '8805', '0.9996', 'EPSG', '9201', 'EPSG', '8806', 500000.0, 'EPSG', '9001', 'EPSG', '8807', -2000000.0, 'EPSG', '9001', 0);
+
+INSERT INTO "main"."projected_crs"
+("auth_name", "code", "name", "coordinate_system_auth_name", "coordinate_system_code", "geodetic_crs_auth_name", "geodetic_crs_code", "conversion_auth_name", "conversion_code", "deprecated")
+VALUES
+    ('CUSTOM', 'GGRS87_HEPOS', 'GGRS87 / HEPOS', 'EPSG', '4400', 'CUSTOM', 'GGRS87APPROX', 'EPSG', '19930', 0),
+    ('CUSTOM', 'HTRS07_TM07', 'HTRS07 / TM07', 'EPSG', '4400', 'CUSTOM', 'HTRS07', 'CUSTOM', 'TM07', 0);
+
+INSERT INTO "main"."helmert_transformation_table"
+("auth_name", "code", "name", "method_auth_name", "method_code", "source_crs_auth_name", "source_crs_code", "target_crs_auth_name", "target_crs_code", "accuracy", "tx", "ty", "tz", "translation_uom_auth_name", "translation_uom_code", "rx", "ry", "rz", "rotation_uom_auth_name", "rotation_uom_code", "scale_difference", "scale_difference_uom_auth_name", "scale_difference_uom_code", "deprecated")
+VALUES
+    ('PROJ', 'CUSTOM_HTRS07_TO_EPSG_4121_1', 'HTRS07 to GGRS87 (1)', 'EPSG', '9607', 'CUSTOM', 'HTRS07', 'EPSG', '4121', 0.0, 203.437, -73.461, -243.594, 'EPSG', '9001', -0.170, -0.060, -0.151, 'EPSG', '9104', -0.294, 'EPSG', '9202', 0),
+    ('PROJ', 'CUSTOM_HTRS07_TO_EPSG_4258_1', 'HTRS07 to ETRS89 (1)', 'EPSG', '9603', 'CUSTOM', 'HTRS07', 'EPSG', '4258', 0.0, 0.0, 0.0, 0.0, 'EPSG', '9001', 0.0, 0.0, 0.0, 'EPSG', '9104', 0.0, 'EPSG', '9202', 0),
+    ('PROJ', 'CUSTOM_HTRS07_TO_EPSG_4326_1', 'HTRS07 to WGS84 (1)', 'EPSG', '9603', 'CUSTOM', 'HTRS07', 'EPSG', '4326', 1.0, 0.0, 0.0, 0.0, 'EPSG', '9001', 0.0, 0.0, 0.0, 'EPSG', '9104', 0.0, 'EPSG', '9202', 0);
+
+INSERT INTO "main"."grid_transformation"
+("auth_name", "code", "name", "method_auth_name", "method_code", "method_name", "source_crs_auth_name", "source_crs_code", "target_crs_auth_name", "target_crs_code", "accuracy", "grid_param_auth_name", "grid_param_code", "grid_param_name", "grid_name", "deprecated")
+VALUES
+    ('PROJ', 'EPSG_4121_TO_CUSTOM_GGRS87APPROX_1', 'GGRS87 to GGRS87 Approx. (1)', 'EPSG', '9615', 'NTv2', 'EPSG', '4121', 'CUSTOM', 'GGRS87APPROX', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'ggrs87_hepos.tif', 0),
+    ('PROJ', 'CUSTOM_HTRS07_3D_TO_CUSTOM_GREEKGEOID2010H_1', 'HTRS07 to Greece GREEKGEOID2010 height (1)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'CUSTOM', 'HTRS07_3D', 'CUSTOM', 'GREEKGEOID2010H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'GreekGeoid2010.tif', 0);
+
+INSERT INTO "main"."concatenated_operation"
+("auth_name", "code", "name", "source_crs_auth_name", "source_crs_code", "target_crs_auth_name", "target_crs_code", "deprecated")
+VALUES
+    ('PROJ', 'HTRS07_TO_GGRS87APPROX', 'HTRS07 to GGRS87 Approx.', 'CUSTOM', 'HTRS07', 'CUSTOM', 'GGRS87APPROX', 0);
+
+INSERT INTO "main"."concatenated_operation_step"
+("operation_auth_name", "operation_code", "step_number", "step_auth_name", "step_code")
+VALUES
+    ('PROJ', 'HTRS07_TO_GGRS87APPROX', 1, 'PROJ', 'CUSTOM_HTRS07_TO_EPSG_4121_1'),
+    ('PROJ', 'HTRS07_TO_GGRS87APPROX', 2, 'PROJ', 'EPSG_4121_TO_CUSTOM_GGRS87APPROX_1');
+
+INSERT INTO "main"."grid_alternatives"
+("original_grid_name", "proj_grid_name", "proj_grid_format", "proj_method", "inverse_direction", "url", "direct_download", "open_license")
+VALUES
+    ('HBG18.tif', 'HBG18.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/HBG18.tif', 1, 1),
+    ('MAPGEO2015_sirgas.tif', 'MAPGEO2015_sirgas.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/MAPGEO2015_sirgas.tif', 1, 1),
+    ('hgeoHNOR2020.tif', 'hgeoHNOR2020.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/hgeoHNOR2020.tif', 1, 1),
+    ('geocol_2004.tif', 'geocol_2004.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/geocol_2004.tif', 1, 1),
+    ('RAF18B.tif', 'fr_ign_RAF18B.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/fr_ign_RAF18B.tif', 1, 1),
+    ('RAF20.tif', 'fr_ign_RAF20.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/fr_ign_RAF20.tif', 1, 1),
+    ('GeodAz2014.tif', 'GeodAz2014.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/GeodAz2014.tif', 1, 1),
+    ('geodPT08.tif', 'geodPT08.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/geodPT08.tif', 1, 1),
+    ('SAGEOID2010.tif', 'SAGEOID2010.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/SAGEOID2010.tif', 1, 1),
+    ('kngeoid13.tif', 'kngeoid13.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/kngeoid13.tif', 1, 1),
+    ('kngeoid14.tif', 'kngeoid14.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/kngeoid14.tif', 1, 1),
+    ('kngeoid18.tif', 'kngeoid18.tif', 'GTiff', 'geoid_like', 0, 'http://files.emlid.com/reachview3/grids-tif/kngeoid18.tif', 1, 1),
+    ('g2012bh0.bin', 'us_noaa_g2012bh0.tif', 'GTiff', 'geoid_like', 0, 'https://cdn.proj.org/us_noaa_g2012bh0.tif', 1, 1),
+    ('GreekGeoid2010.tif', 'GreekGeoid2010.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/GreekGeoid2010.tif', '1', '1'),
+    ('ggrs87_hepos.tif', 'ggrs87_hepos.tif', 'NTv2', 'hgridshift', '0', 'http://files.emlid.com/reachview3/grids-tif/ggrs87_hepos.tif', '1', '1');
+
+INSERT INTO "main"."usage"
+("auth_name", "code", "object_table_name", "object_auth_name", "object_code", "extent_auth_name", "extent_code", "scope_auth_name", "scope_code")
+VALUES
+    ('CUSTOM', 'HBG18D', 'vertical_datum', 'CUSTOM', 'HBG18D', 'EPSG', '1044', 'EPSG', '1024'),
+    ('CUSTOM', 'HBG18H', 'vertical_crs', 'CUSTOM', 'HBG18H', 'EPSG', '1044', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4937_TO_CUSTOM_HBG18H_1', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_HBG18H_1', 'EPSG', '1044', 'EPSG', '1024'),
+    ('CUSTOM', 'MAPGEO2015D', 'vertical_datum', 'CUSTOM', 'MAPGEO2015D', 'EPSG', '1053', 'EPSG', '1024'),
+    ('CUSTOM', 'HGEOHNOR2020D', 'vertical_datum', 'CUSTOM', 'HGEOHNOR2020D', 'EPSG', '1053', 'EPSG', '1024'),
+    ('CUSTOM', 'MAPGEO2015H', 'vertical_crs', 'CUSTOM', 'MAPGEO2015H', 'EPSG', '1053', 'EPSG', '1024'),
+    ('CUSTOM', 'HGEOHNOR2020H', 'vertical_crs', 'CUSTOM', 'HGEOHNOR2020H', 'EPSG', '1053', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4989_TO_CUSTOM_MAPGEO2015H_1', 'grid_transformation', 'PROJ', 'EPSG_4989_TO_CUSTOM_MAPGEO2015H_1', 'EPSG', '1053', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4989_TO_CUSTOM_HGEOHNOR2020H_1', 'grid_transformation', 'PROJ', 'EPSG_4989_TO_CUSTOM_HGEOHNOR2020H_1', 'EPSG', '1053', 'EPSG', '1024'),
+    ('CUSTOM', 'GEOCOL2004D', 'vertical_datum', 'CUSTOM', 'GEOCOL2004D', 'EPSG', '1070', 'EPSG', '1024'),
+    ('CUSTOM', 'GEOCOL2004H', 'vertical_crs', 'CUSTOM', 'GEOCOL2004H', 'EPSG', '1070', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4686_TO_CUSTOM_GEOCOL2004H_1', 'grid_transformation', 'PROJ', 'EPSG_4686_TO_CUSTOM_GEOCOL2004H_1', 'EPSG', '1070', 'EPSG', '1024'),
+    ('CUSTOM', 'NGFIGN69RAF09H', 'vertical_crs', 'CUSTOM', 'NGFIGN69RAF09H', 'EPSG', '1326', 'EPSG', '1024'),
+    ('CUSTOM', 'NGFIGN69RAF18BH', 'vertical_crs', 'CUSTOM', 'NGFIGN69RAF18BH', 'EPSG', '1326', 'EPSG', '1024'),
+    ('CUSTOM', 'NGFIGN69RAF20H', 'vertical_crs', 'CUSTOM', 'NGFIGN69RAF20H', 'EPSG', '1326', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF09H_1', 'grid_transformation', 'PROJ', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF09H_1', 'EPSG', '1326', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF18BH_1', 'grid_transformation', 'PROJ', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF18BH_1', 'EPSG', '1326', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF20H_1', 'grid_transformation', 'PROJ', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF20H_1', 'EPSG', '1326', 'EPSG', '1024'),
+    ('CUSTOM', 'NTF_LAMBC', 'projected_crs', 'CUSTOM', 'NTF_LAMBC', 'EPSG', '1327', 'EPSG', '1142'),
+    ('CUSTOM', 'GEODAZ2014D', 'vertical_datum', 'CUSTOM', 'GEODAZ2014D', 'EPSG', '3677', 'EPSG', '1024'),
+    ('CUSTOM', 'GEODPT08D', 'vertical_datum', 'CUSTOM', 'GEODPT08D', 'EPSG', '1294', 'EPSG', '1024'),
+    ('CUSTOM', 'GEODAZ2014H', 'vertical_crs', 'CUSTOM', 'GEODAZ2014H', 'EPSG', '3677', 'EPSG', '1024'),
+    ('CUSTOM', 'GEODPT08H', 'vertical_crs', 'CUSTOM', 'GEODPT08H', 'EPSG', '1294', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_5013_TO_CUSTOM_GEODAZ2014H_1', 'grid_transformation', 'PROJ', 'EPSG_5013_TO_CUSTOM_GEODAZ2014H_1', 'EPSG', '3677', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4937_TO_CUSTOM_GEODPT08H_1', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_CUSTOM_GEODPT08H_1', 'EPSG', '1294', 'EPSG', '1024'),
+    ('CUSTOM', 'SAGEOID2010D', 'vertical_datum', 'CUSTOM', 'SAGEOID2010D', 'EPSG', '1215', 'EPSG', '1024'),
+    ('CUSTOM', 'SAGEOID2010H', 'vertical_crs', 'CUSTOM', 'SAGEOID2010H', 'EPSG', '1215', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4148_TO_CUSTOM_SAGEOID2010H_1', 'grid_transformation', 'PROJ', 'EPSG_4148_TO_CUSTOM_SAGEOID2010H_1', 'EPSG', '1215', 'EPSG', '1024'),
+    ('CUSTOM', 'KNGEOID13D', 'vertical_datum', 'CUSTOM', 'KNGEOID13D', 'EPSG', '1135', 'EPSG', '1024'),
+    ('CUSTOM', 'KNGEOID14D', 'vertical_datum', 'CUSTOM', 'KNGEOID14D', 'EPSG', '1135', 'EPSG', '1024'),
+    ('CUSTOM', 'KNGEOID18D', 'vertical_datum', 'CUSTOM', 'KNGEOID18D', 'EPSG', '1135', 'EPSG', '1024'),
+    ('CUSTOM', 'KNGEOID13H', 'vertical_crs', 'CUSTOM', 'KNGEOID13H', 'EPSG', '1135', 'EPSG', '1024'),
+    ('CUSTOM', 'KNGEOID14H', 'vertical_crs', 'CUSTOM', 'KNGEOID14H', 'EPSG', '1135', 'EPSG', '1024'),
+    ('CUSTOM', 'KNGEOID18H', 'vertical_crs', 'CUSTOM', 'KNGEOID18H', 'EPSG', '1135', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4927_TO_CUSTOM_KNGEOID13H_1', 'grid_transformation', 'PROJ', 'EPSG_4927_TO_CUSTOM_KNGEOID13H_1', 'EPSG', '1135', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4927_TO_CUSTOM_KNGEOID14H_1', 'grid_transformation', 'PROJ', 'EPSG_4927_TO_CUSTOM_KNGEOID14H_1', 'EPSG', '1135', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4927_TO_CUSTOM_KNGEOID18H_1', 'grid_transformation', 'PROJ', 'EPSG_4927_TO_CUSTOM_KNGEOID18H_1', 'EPSG', '1135', 'EPSG', '1024'),
+    ('CUSTOM', 'NAVD88G12BD', 'vertical_datum', 'CUSTOM', 'NAVD88G12BD', 'EPSG', '1324', 'EPSG', '1024'),
+    ('CUSTOM', 'NAVD88G12BH', 'vertical_crs', 'CUSTOM', 'NAVD88G12BH', 'EPSG', '1324', 'EPSG', '1024'),
+    ('CUSTOM', 'NAVD88G12BFTUSH', 'vertical_crs', 'CUSTOM', 'NAVD88G12BFTUSH', 'EPSG', '1324', 'EPSG', '1024'),
+    ('CUSTOM', 'NAVD88G12BFTH', 'vertical_crs', 'CUSTOM', 'NAVD88G12BFTH', 'EPSG', '1324', 'EPSG', '1024'),
+    ('CUSTOM', 'PRVD02G12BH', 'vertical_crs', 'CUSTOM', 'PRVD02G12BH', 'EPSG', '3294', 'EPSG', '1024'),
+    ('CUSTOM', 'VIVD09G12BH', 'vertical_crs', 'CUSTOM', 'VIVD09G12BH', 'EPSG', '3330', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_6319_TO_CUSTOM_NAVD88G12BH_1', 'grid_transformation', 'PROJ', 'EPSG_6319_TO_CUSTOM_NAVD88G12BH_1', 'EPSG', '1323', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_6319_TO_CUSTOM_NAVD88G12BH_2', 'grid_transformation', 'PROJ', 'EPSG_6319_TO_CUSTOM_NAVD88G12BH_2', 'EPSG', '1330', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_6319_TO_CUSTOM_PRVD02G12BH_1', 'grid_transformation', 'PROJ', 'EPSG_6319_TO_CUSTOM_PRVD02G12BH_1', 'EPSG', '3294', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_6319_TO_CUSTOM_VIVD09G12BH_1', 'grid_transformation', 'PROJ', 'EPSG_6319_TO_CUSTOM_VIVD09G12BH_1', 'EPSG', '3330', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_6322_TO_EPSG_5703_1', 'grid_transformation', 'PROJ', 'EPSG_6322_TO_EPSG_5703_1_RESTRICTED_TO_VERTCRS', 'EPSG', '1334', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_6322_TO_CUSTOM_NAVD88G12BH_1', 'grid_transformation', 'PROJ', 'EPSG_6322_TO_CUSTOM_NAVD88G12BH_1', 'EPSG', '1334', 'EPSG', '1024'),
+    ('CUSTOM', 'CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTUSH', 'other_transformation', 'PROJ', 'CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTUSH', 'EPSG', '1324', 'EPSG', '1024'),
+    ('CUSTOM', 'CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTH', 'other_transformation', 'PROJ', 'CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTH', 'EPSG', '1324', 'EPSG', '1024'),
+    ('CUSTOM', 'NAVD88FTUSH', 'vertical_crs', 'EPSG', '6360', 'EPSG', '1324', 'EPSG', '1024'),
+    ('CUSTOM', 'NAVD88FTH', 'vertical_crs', 'EPSG', '8228', 'EPSG', '1324', 'EPSG', '1024'),
+    ('CUSTOM', 'GGRS87APPROXD', 'geodetic_datum', 'CUSTOM', 'GGRS87APPROXD', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'GGRS87APPROX', 'geodetic_crs', 'CUSTOM', 'GGRS87APPROX', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_4121_TO_CUSTOM_GGRS87APPROX_1', 'grid_transformation', 'PROJ', 'EPSG_4121_TO_CUSTOM_GGRS87APPROX_1', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'GGRS87_HEPOS', 'projected_crs', 'CUSTOM', 'GGRS87_HEPOS', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'GREEKGEOID2010D', 'vertical_datum', 'CUSTOM', 'GREEKGEOID2010D', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'GREEKGEOID2010H', 'vertical_crs', 'CUSTOM', 'GREEKGEOID2010H', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'HTRS07D', 'geodetic_datum', 'CUSTOM', 'HTRS07D', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'HTRS07', 'geodetic_crs', 'CUSTOM', 'HTRS07', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'HTRS07_ECEF', 'geodetic_crs', 'CUSTOM', 'HTRS07_ECEF', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'HTRS07_3D', 'geodetic_crs', 'CUSTOM', 'HTRS07_3D', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'HTRS07_TM07', 'projected_crs', 'CUSTOM', 'HTRS07_TM07', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'CUSTOM_HTRS07_TO_EPSG_4121_1', 'helmert_transformation', 'PROJ', 'CUSTOM_HTRS07_TO_EPSG_4121_1', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'CUSTOM_HTRS07_TO_EPSG_4258_1', 'helmert_transformation', 'PROJ', 'CUSTOM_HTRS07_TO_EPSG_4258_1', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'CUSTOM_HTRS07_TO_EPSG_4326_1', 'helmert_transformation', 'PROJ', 'CUSTOM_HTRS07_TO_EPSG_4326_1', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', 'CUSTOM_HTRS07_3D_TO_CUSTOM_GREEKGEOID2010H_1', 'grid_transformation', 'PROJ', 'CUSTOM_HTRS07_3D_TO_CUSTOM_GREEKGEOID2010H_1', 'EPSG', '1106', 'EPSG', '1024'),
+    ('CUSTOM', '6695', 'vertical_crs', 'EPSG', '6695', 'EPSG', '3957', 'EPSG', '1024'),
+    ('CUSTOM', 'EPSG_6667_TO_EPSG_6695', 'grid_transformation', 'PROJ', 'EPSG_6667_TO_EPSG_6695', 'EPSG', '3957', 'EPSG', '1024');
 
 -- Decrease the accuracy of Slovak transformation to Baltic 1957 to prioritize the Czech transformation, which has an accuracy of 0.05.
 -- Otherwise, the Slovak transformation is used in some parts of Czechia, leading to inaccurate results. It affects only the legacy registry,

@@ -6,9 +6,8 @@ set(SQL_FILES_CONSISTENCY_CHECKS_TRIGGERS
   "${SQL_DIR}/conversion_triggers_hand_written.sql"
 )
 
-# When setting PROJ_DB_EXTRA_VALIDATION=OFF, we defer the insertion of check triggers
-# until the very end to save build time. We also entirely skip running
-# final_consistency_checks.sql.
+# PROJ_DB_EXTRA_VALIDATION is set from option PROJ_DB_FINAL_CONSISTENCY_CHECKS in data/CMakeLists.txt.
+# When OFF (default), we defer check triggers until the end and skip final_consistency_checks.sql.
 # Typical build time with PROJ_DB_EXTRA_VALIDATION=ON: 60 seconds
 # Typical build time with PROJ_DB_EXTRA_VALIDATION=OFF: 3.7 seconds
 
