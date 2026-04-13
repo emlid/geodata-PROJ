@@ -377,7 +377,7 @@ UPDATE "main"."grid_transformation"
 SET "accuracy" = 0.051
 WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361');
 
-Update the extend for Czechia to transform point correctly near the south border.
+-- Update the extend for Czechia to transform point correctly near the south border.
 UPDATE "main"."extent"
 SET "south_lat" = 48.55
 WHERE "auth_name" = 'EPSG' AND "code" = '1079';
