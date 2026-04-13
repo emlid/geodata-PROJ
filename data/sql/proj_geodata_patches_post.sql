@@ -2,8 +2,121 @@
 -- Loaded last (after grid_alternatives.sql, customizations.sql, nkg_post_customizations.sql)
 -- so stock SQL cannot overwrite these rows. Formerly data/sql/emlid_grids.sql mid-pipeline.
 -- _RESTRICTED_TO_VERTCRS allows overlap with existing EPSG grid_transformation rows, so final_consistency_checks.sql pass.
+-- Post-hoc apply (sqlite3 existing proj.db): Geographic3D-to-geoid rows use geographic 3D EPSG source CRS codes so
+-- grid_transformation_insert_trigger passes (same datum as the former 2D codes: 4997/4686, 5012/5013, 4941/4148, 6321/6322).
+-- Re-running this file on the same proj.db is safe: the block below removes this patch's rows first (idempotent hard-apply).
 
 INSERT OR IGNORE INTO builtin_authorities VALUES('CUSTOM');
+
+-- ---------------------------------------------------------------------------
+-- Tear down prior application of this patch (children before parents).
+-- ---------------------------------------------------------------------------
+DELETE FROM "main"."concatenated_operation_step"
+WHERE "operation_auth_name" = 'PROJ' AND "operation_code" = 'HTRS07_TO_GGRS87APPROX';
+
+DELETE FROM "main"."usage"
+WHERE "auth_name" = 'CUSTOM' AND "code" IN (
+    '1000','1001','1002','1003','1004','1005','1006','1007','1008','1009','1010','1011','1012','1013','1014','1015','1016','1017',
+    '2001','2002','2004','2006','2007','2008',
+    '3001','3002','3004','3011','3012','3013',
+    '4001','4002','4004','4010','4011','4012',
+    'HBG18D','HBG18H','EPSG_4937_TO_CUSTOM_HBG18H_1',
+    'MAPGEO2015D','HGEOHNOR2020D','MAPGEO2015H','HGEOHNOR2020H',
+    'EPSG_4989_TO_CUSTOM_MAPGEO2015H_1','EPSG_4989_TO_CUSTOM_HGEOHNOR2020H_1',
+    'GEOCOL2004D','GEOCOL2004H','EPSG_4686_TO_CUSTOM_GEOCOL2004H_1',
+    'NGFIGN69RAF09H','NGFIGN69RAF18BH','NGFIGN69RAF20H',
+    'EPSG_4965_TO_CUSTOM_NGFIGN69RAF09H_1','EPSG_4965_TO_CUSTOM_NGFIGN69RAF18BH_1','EPSG_4965_TO_CUSTOM_NGFIGN69RAF20H_1',
+    'NTF_LAMBC',
+    'GEODAZ2014D','GEODPT08D','GEODAZ2014H','GEODPT08H',
+    'EPSG_5013_TO_CUSTOM_GEODAZ2014H_1','EPSG_4937_TO_CUSTOM_GEODPT08H_1',
+    'SAGEOID2010D','SAGEOID2010H','EPSG_4148_TO_CUSTOM_SAGEOID2010H_1',
+    'KNGEOID13D','KNGEOID14D','KNGEOID18D','KNGEOID13H','KNGEOID14H','KNGEOID18H',
+    'EPSG_4927_TO_CUSTOM_KNGEOID13H_1','EPSG_4927_TO_CUSTOM_KNGEOID14H_1','EPSG_4927_TO_CUSTOM_KNGEOID18H_1',
+    'NAVD88G12BD','NAVD88G12BH','NAVD88G12BFTUSH','NAVD88G12BFTH','PRVD02G12BH','VIVD09G12BH',
+    'EPSG_6319_TO_CUSTOM_NAVD88G12BH_1','EPSG_6319_TO_CUSTOM_NAVD88G12BH_2',
+    'EPSG_6319_TO_CUSTOM_PRVD02G12BH_1','EPSG_6319_TO_CUSTOM_VIVD09G12BH_1',
+    'EPSG_6322_TO_EPSG_5703_1','EPSG_6322_TO_CUSTOM_NAVD88G12BH_1',
+    'CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTUSH','CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTH',
+    'NAVD88FTUSH','NAVD88FTH',
+    'GGRS87APPROXD','GGRS87APPROX','EPSG_4121_TO_CUSTOM_GGRS87APPROX_1','GGRS87_HEPOS',
+    'GREEKGEOID2010D','GREEKGEOID2010H','HTRS07D','HTRS07','HTRS07_ECEF','HTRS07_3D','HTRS07_TM07',
+    'CUSTOM_HTRS07_TO_EPSG_4121_1','CUSTOM_HTRS07_TO_EPSG_4258_1','CUSTOM_HTRS07_TO_EPSG_4326_1',
+    'CUSTOM_HTRS07_3D_TO_CUSTOM_GREEKGEOID2010H_1',
+    '6695','EPSG_6667_TO_EPSG_6695'
+);
+
+DELETE FROM "main"."grid_alternatives"
+WHERE "original_grid_name" IN (
+    'N2000.tif','N60.tif','chgeo04_etrf.tif','chgeo04_HT_etrf.tif','nn2000.gtx','GCG2016.byn','lv_14.tif',
+    'sloamg2000.tif','svs2010.tif','stereo70_etrs89A.gsb','HTRS96_HRG2009.tif','etrs2eov_notowgs.gsb','italy_ed50.tif','roma40.tif','GEORG12.tif',
+    'GGM10.tif','lit15g.tif','EGG97_QGRJ_SfASCII.tif','vitel2014.tif','eht2014.tif','itg2009.tif',
+    'HBG18.tif','MAPGEO2015_sirgas.tif','hgeoHNOR2020.tif','geocol_2004.tif','RAF18B.tif','RAF20.tif',
+    'GeodAz2014.tif','geodPT08.tif','SAGEOID2010.tif','kngeoid13.tif','kngeoid14.tif','kngeoid18.tif',
+    'g2012bh0.bin','GreekGeoid2010.tif','ggrs87_hepos.tif'
+);
+
+DELETE FROM "main"."concatenated_operation"
+WHERE "auth_name" = 'PROJ' AND "code" = 'HTRS07_TO_GGRS87APPROX';
+
+DELETE FROM "main"."other_transformation"
+WHERE "auth_name" = 'PROJ' AND "code" IN (
+    'CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTUSH','CUSTOM_NAVD88G12BH_TO_CUSTOM_NAVD88G12BFTH'
+);
+
+DELETE FROM "main"."grid_transformation"
+WHERE "auth_name" = 'PROJ' AND "code" IN (
+    'EPSG_4937_TO_EPSG_3900_1','EPSG_4937_TO_EPSG_5717_1','EPSG_4937_TO_EPSG_5621_1','EPSG_4937_TO_EPSG_5729_1',
+    'EPSG_4937_TO_EPSG_5728_1','EPSG_4937_TO_EPSG_5941_1','EPSG_4937_TO_EPSG_7837_1','EPSG_4949_TO_EPSG_7700_1',
+    'EPSG_4883_TO_EPSG_5779_1','EPSG_4883_TO_EPSG_8690_1','EPSG_4955_TO_EPSG_6647_1','EPSG_4955_TO_EPSG_9245_1',
+    'EPSG_4179_TO_EPSG_4258_1','EPSG_4889_TO_EPSG_5610_1','EPSG_4237_TO_EPSG_4258_1','EPSG_4230_TO_EPSG_4258_1',
+    'EPSG_4265_TO_EPSG_4258_1','EPSG_4937_TO_EPSG_5705_1',
+    'EPSG_6364_TO_CUSTOM_GGM10H_1','EPSG_4951_TO_CUSTOM_LAS07H_1','EPSG_4937_TO_CUSTOM_MN75H_1',
+    'EPSG_4937_TO_CUSTOM_VITEL2014H_1','EPSG_4937_TO_CUSTOM_EHT2014H_1','EPSG_4937_TO_CUSTOM_ITG2009H_1',
+    'EPSG_4937_TO_CUSTOM_HBG18H_1','EPSG_4989_TO_CUSTOM_MAPGEO2015H_1','EPSG_4989_TO_CUSTOM_HGEOHNOR2020H_1',
+    'EPSG_4686_TO_CUSTOM_GEOCOL2004H_1','EPSG_4965_TO_CUSTOM_NGFIGN69RAF09H_1','EPSG_4965_TO_CUSTOM_NGFIGN69RAF18BH_1',
+    'EPSG_4965_TO_CUSTOM_NGFIGN69RAF20H_1','EPSG_5013_TO_CUSTOM_GEODAZ2014H_1','EPSG_4937_TO_CUSTOM_GEODPT08H_1',
+    'EPSG_4148_TO_CUSTOM_SAGEOID2010H_1','EPSG_4927_TO_CUSTOM_KNGEOID13H_1','EPSG_4927_TO_CUSTOM_KNGEOID14H_1',
+    'EPSG_4927_TO_CUSTOM_KNGEOID18H_1','EPSG_6319_TO_CUSTOM_NAVD88G12BH_1','EPSG_6319_TO_CUSTOM_NAVD88G12BH_2',
+    'EPSG_6319_TO_CUSTOM_PRVD02G12BH_1','EPSG_6319_TO_CUSTOM_VIVD09G12BH_1','EPSG_6322_TO_EPSG_5703_1',
+    'EPSG_6322_TO_CUSTOM_NAVD88G12BH_1','EPSG_4121_TO_CUSTOM_GGRS87APPROX_1','CUSTOM_HTRS07_3D_TO_CUSTOM_GREEKGEOID2010H_1'
+    -- EPSG_6667_TO_EPSG_6695: not deleted; row is from grid_transformation_custom.sql, this file only adds CUSTOM usage.
+);
+
+DELETE FROM "main"."helmert_transformation_table"
+WHERE "auth_name" = 'PROJ' AND "code" IN (
+    'CUSTOM_HTRS07_TO_EPSG_4121_1','CUSTOM_HTRS07_TO_EPSG_4258_1','CUSTOM_HTRS07_TO_EPSG_4326_1'
+);
+
+DELETE FROM "main"."projected_crs"
+WHERE "auth_name" = 'CUSTOM' AND "code" IN ('NTF_LAMBC','GGRS87_HEPOS','HTRS07_TM07');
+
+DELETE FROM "main"."conversion_table"
+WHERE "auth_name" = 'CUSTOM' AND "code" IN ('LAMBC_GREENWICH','TM07');
+
+DELETE FROM "main"."geodetic_crs"
+WHERE "auth_name" = 'CUSTOM' AND "code" IN ('HTRS07','HTRS07_ECEF','HTRS07_3D','GGRS87APPROX');
+
+DELETE FROM "main"."vertical_crs"
+WHERE "auth_name" = 'CUSTOM' AND "code" IN (
+    'GGM10H','LAS07H','MN75H','VITEL2014H','EHT2014H','ITG2009H',
+    'HBG18H','MAPGEO2015H','HGEOHNOR2020H','GEOCOL2004H','NGFIGN69RAF09H','NGFIGN69RAF18BH','NGFIGN69RAF20H',
+    'GEODAZ2014H','GEODPT08H','SAGEOID2010H','KNGEOID13H','KNGEOID14H','KNGEOID18H',
+    'NAVD88G12BH','NAVD88G12BFTUSH','NAVD88G12BFTH','PRVD02G12BH','VIVD09G12BH','GREEKGEOID2010H'
+);
+
+DELETE FROM "main"."vertical_datum"
+WHERE "auth_name" = 'CUSTOM' AND "code" IN (
+    'GGM10D','LAS07D','MN75D','VITEL2014D','EHT2014D','ITG2009D',
+    'HBG18D','MAPGEO2015D','HGEOHNOR2020D','GEOCOL2004D','GEODAZ2014D','GEODPT08D',
+    'SAGEOID2010D','KNGEOID13D','KNGEOID14D','KNGEOID18D','NAVD88G12BD','GREEKGEOID2010D'
+);
+
+DELETE FROM "main"."geodetic_datum"
+WHERE "auth_name" = 'CUSTOM' AND "code" IN ('HTRS07D','GGRS87APPROXD');
+
+-- ---------------------------------------------------------------------------
+-- End tear-down; inserts follow.
+-- ---------------------------------------------------------------------------
 
 INSERT INTO "main"."grid_transformation"
 ("auth_name", "code", "name", "method_auth_name", "method_code", "method_name", "source_crs_auth_name", "source_crs_code", "target_crs_auth_name", "target_crs_code", "accuracy", "grid_param_auth_name", "grid_param_code", "grid_param_name", "grid_name", "deprecated")
@@ -140,7 +253,7 @@ VALUES
     ('eht2014.tif', 'eht2014.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/eht2014.tif', '1', '1'),
     ('itg2009.tif', 'itg2009.tif', 'GTiff', 'geoid_like', '0', 'http://files.emlid.com/reachview3/grids-tif/itg2009.tif', '1', '1');
 
--- Regional patches (from ReachView3 geodata-core build-scripts/sql; EPSG-target geoids use  where needed)
+-- Regional patches (from ReachView3 geodata-core build-scripts/sql; EPSG-target geoids use geographic 3D source CRS where needed)
 
 INSERT INTO "main"."vertical_datum"
 ("auth_name", "code", "name", "deprecated")
@@ -185,13 +298,13 @@ VALUES
     ('PROJ', 'EPSG_4937_TO_CUSTOM_HBG18H_1', 'ETRS89 to Belgium HBG18H height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'CUSTOM', 'HBG18H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'HBG18.tif', 0),
     ('PROJ', 'EPSG_4989_TO_CUSTOM_MAPGEO2015H_1', 'SIRGAS 2000 to Brazil MAPGEO2015 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4989', 'CUSTOM', 'MAPGEO2015H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'MAPGEO2015_sirgas.tif', 0),
     ('PROJ', 'EPSG_4989_TO_CUSTOM_HGEOHNOR2020H_1', 'SIRGAS 2000 to Brazil hgeoHNOR2020 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4989', 'CUSTOM', 'HGEOHNOR2020H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'hgeoHNOR2020.tif', 0),
-    ('PROJ', 'EPSG_4686_TO_CUSTOM_GEOCOL2004H_1', 'MAGNA-SIRGAS to Colombia GeoCol2004 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4686', 'CUSTOM', 'GEOCOL2004H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'geocol_2004.tif', 0),
+    ('PROJ', 'EPSG_4686_TO_CUSTOM_GEOCOL2004H_1', 'MAGNA-SIRGAS to Colombia GeoCol2004 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4997', 'CUSTOM', 'GEOCOL2004H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'geocol_2004.tif', 0),
     ('PROJ', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF09H_1', 'RGF93 to NGF-IGN69(RAF09) height', 'EPSG', '1073', 'Geographic3D to GravityRelatedHeight (IGN2009)', 'EPSG', '4965', 'CUSTOM', 'NGFIGN69RAF09H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'RAF09.mnt', 0),
     ('PROJ', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF18BH_1', 'RGF93 to NGF-IGN69(RAF18B) height', 'EPSG', '1073', 'Geographic3D to GravityRelatedHeight (IGN2009)', 'EPSG', '4965', 'CUSTOM', 'NGFIGN69RAF18BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'RAF18B.tif', 0),
     ('PROJ', 'EPSG_4965_TO_CUSTOM_NGFIGN69RAF20H_1', 'RGF93 to NGF-IGN69(RAF20) height', 'EPSG', '1073', 'Geographic3D to GravityRelatedHeight (IGN2009)', 'EPSG', '4965', 'CUSTOM', 'NGFIGN69RAF20H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'RAF20.tif', 0),
-    ('PROJ', 'EPSG_5013_TO_CUSTOM_GEODAZ2014H_1', 'PTRA08 to Portugal GEODAZ2014 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '5013', 'CUSTOM', 'GEODAZ2014H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'GeodAz2014.tif', 0),
+    ('PROJ', 'EPSG_5013_TO_CUSTOM_GEODAZ2014H_1', 'PTRA08 to Portugal GEODAZ2014 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '5012', 'CUSTOM', 'GEODAZ2014H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'GeodAz2014.tif', 0),
     ('PROJ', 'EPSG_4937_TO_CUSTOM_GEODPT08H_1', 'ETRS89 to Portugal GEODPT08 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'CUSTOM', 'GEODPT08H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'geodPT08.tif', 0),
-    ('PROJ', 'EPSG_4148_TO_CUSTOM_SAGEOID2010H_1', 'Hartebeesthoek94 to South Africa SAGEOID2010 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4148', 'CUSTOM', 'SAGEOID2010H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'SAGEOID2010.tif', 0),
+    ('PROJ', 'EPSG_4148_TO_CUSTOM_SAGEOID2010H_1', 'Hartebeesthoek94 to South Africa SAGEOID2010 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4941', 'CUSTOM', 'SAGEOID2010H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'SAGEOID2010.tif', 0),
     ('PROJ', 'EPSG_4927_TO_CUSTOM_KNGEOID13H_1', 'Korea 2000 to South Korea KNGEOID13 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4927', 'CUSTOM', 'KNGEOID13H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'kngeoid13.tif', 0),
     ('PROJ', 'EPSG_4927_TO_CUSTOM_KNGEOID14H_1', 'Korea 2000 to South Korea KNGEOID14 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4927', 'CUSTOM', 'KNGEOID14H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'kngeoid14.tif', 0),
     ('PROJ', 'EPSG_4927_TO_CUSTOM_KNGEOID18H_1', 'Korea 2000 to South Korea KNGEOID18 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4927', 'CUSTOM', 'KNGEOID18H', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'kngeoid18.tif', 0),
@@ -199,8 +312,8 @@ VALUES
     ('PROJ', 'EPSG_6319_TO_CUSTOM_NAVD88G12BH_2', 'NAD83(2011) to NAVD88(GEOID12B) height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6319', 'CUSTOM', 'NAVD88G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012ba0.bin', 0),
     ('PROJ', 'EPSG_6319_TO_CUSTOM_PRVD02G12BH_1', 'NAD83(2011) to PRVD02(GEOID12B) height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6319', 'CUSTOM', 'PRVD02G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bp0.bin', 0),
     ('PROJ', 'EPSG_6319_TO_CUSTOM_VIVD09G12BH_1', 'NAD83(2011) to VIVD09(GEOID12B) height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6319', 'CUSTOM', 'VIVD09G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bp0.bin', 0),
-    ('PROJ', 'EPSG_6322_TO_EPSG_5703_1', 'NAD83(PA11) to NAVD88 height, Hawaii', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6322', 'EPSG', '5703', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bh0.bin', 0),
-    ('PROJ', 'EPSG_6322_TO_CUSTOM_NAVD88G12BH_1', 'NAD83(PA11) to NAVD88(GEOID12B) height, Hawaii', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6322', 'CUSTOM', 'NAVD88G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bh0.bin', 0);
+    ('PROJ', 'EPSG_6322_TO_EPSG_5703_1', 'NAD83(PA11) to NAVD88 height, Hawaii', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6321', 'EPSG', '5703', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bh0.bin', 0),
+    ('PROJ', 'EPSG_6322_TO_CUSTOM_NAVD88G12BH_1', 'NAD83(PA11) to NAVD88(GEOID12B) height, Hawaii', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '6321', 'CUSTOM', 'NAVD88G12BH', 999, 'EPSG', '8666', 'Geoid (height correction) model file', 'g2012bh0.bin', 0);
 
 INSERT INTO "main"."other_transformation"
 ("auth_name", "code", "name", "method_auth_name", "method_code", "method_name", "source_crs_auth_name", "source_crs_code", "target_crs_auth_name", "target_crs_code", "param1_auth_name", "param1_code", "param1_name", "param1_value", "param1_uom_auth_name", "param1_uom_code", "deprecated")
@@ -373,9 +486,13 @@ VALUES
 -- Decrease the accuracy of Slovak transformation to Baltic 1957 to prioritize the Czech transformation, which has an accuracy of 0.05.
 -- Otherwise, the Slovak transformation is used in some parts of Czechia, leading to inaccurate results. It affects only the legacy registry,
 -- so in the new one, the Slovak transformation works accurately, while for Czech we don't have this transformation in the new registry yet.
+-- Match by grid_name so both EPSG:8361 and the PROJ clone from customizations.sql (same grid_name; code = auth||'_'||code||'_RESTRICTED_TO_VERTCRS') are updated.
+-- Also match by authority/code and PROJ code pattern for forks that change grid_name or INTEGER_OR_TEXT storage.
 UPDATE "main"."grid_transformation"
 SET "accuracy" = 0.051
-WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361');
+WHERE "grid_name" = 'Slovakia_ETRS89h_to_Baltic1957.gtx'
+   OR ("auth_name" = 'EPSG' AND "code" = '8361')
+   OR ("auth_name" = 'PROJ' AND CAST("code" AS TEXT) GLOB 'EPSG_8361*_RESTRICTED_TO_VERTCRS');
 
 -- Update the extend for Czechia to transform point correctly near the south border.
 UPDATE "main"."extent"
