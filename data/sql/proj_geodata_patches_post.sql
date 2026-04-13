@@ -373,14 +373,14 @@ VALUES
 -- Decrease the accuracy of Slovak transformation to Baltic 1957 to prioritize the Czech transformation, which has an accuracy of 0.05.
 -- Otherwise, the Slovak transformation is used in some parts of Czechia, leading to inaccurate results. It affects only the legacy registry,
 -- so in the new one, the Slovak transformation works accurately, while for Czech we don't have this transformation in the new registry yet.
--- UPDATE "main"."grid_transformation"
--- SET "accuracy" = 0.051
--- WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361');
+UPDATE "main"."grid_transformation"
+SET "accuracy" = 0.051
+WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361');
 
--- Update the extend for Czechia to transform point correctly near the south border.
--- UPDATE "main"."extent"
--- SET "south_lat" = 48.55
--- WHERE "auth_name" = 'EPSG' AND "code" = '1079';
+Update the extend for Czechia to transform point correctly near the south border.
+UPDATE "main"."extent"
+SET "south_lat" = 48.55
+WHERE "auth_name" = 'EPSG' AND "code" = '1079';
 
 -- Update the name for Czech CS according to the local requirements
 UPDATE "main"."projected_crs"
