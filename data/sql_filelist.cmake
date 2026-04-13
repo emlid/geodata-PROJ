@@ -57,9 +57,7 @@ list(APPEND SQL_FILES
   "${SQL_DIR}/nrcan.sql"
   "${SQL_DIR}/transformations_czechia.sql"
 )
-if(PROJ_ENABLE_PATCH)
-  list(APPEND SQL_FILES "${SQL_DIR}/emlid_grids.sql")
-endif()
+list(APPEND SQL_FILES "${SQL_DIR}/emlid_grids.sql")
 list(APPEND SQL_FILES
   "${SQL_DIR}/grid_alternatives.sql"
   "${SQL_DIR}/grid_alternatives_generated_noaa.sql"

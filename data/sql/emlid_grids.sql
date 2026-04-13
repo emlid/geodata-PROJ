@@ -1,4 +1,3 @@
--- This patch: applies only if PROJ_ENABLE_PATCH=ON.
 -- _RESTRICTED_TO_VERTCRS allows overlap with existing EPSG grid_transformation rows, so final_consistency_checks.sql pass.
 
 INSERT OR IGNORE INTO builtin_authorities VALUES('CUSTOM');
@@ -379,7 +378,6 @@ WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "c
 UPDATE "main"."extent"
 SET "south_lat" = 48.55
 WHERE "auth_name" = 'EPSG' AND "code" = '1079';
-
 
 -- Update the name for Czech CS according to the local requirements
 UPDATE "main"."projected_crs"
