@@ -65,7 +65,7 @@ list(APPEND SQL_FILES
   "${SQL_DIR}/customizations.sql"
   "${SQL_DIR}/nkg_post_customizations.sql"
 )
-list(APPEND SQL_FILES "${SQL_DIR}/proj_geodata_patches_post.sql")
+# list(APPEND SQL_FILES "${SQL_DIR}/proj_geodata_patches_post.sql")
 
 if (PROJ_DB_EXTRA_VALIDATION)
   list(APPEND SQL_FILES "${SQL_DIR}/show_useless_aliases.sql")
