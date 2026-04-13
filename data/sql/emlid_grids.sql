@@ -374,6 +374,14 @@ UPDATE "main"."grid_transformation"
 SET "accuracy" = 0.051
 WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361');
 
+-- EPSG registers 8369 as BD72 (4313) -> ETRS89-BEL (11215). Tie the NTv2 grid to EPSG:4258 instead so
+-- EPSG:4258 <-> BD72 / Belgian Lambert 72 (31370) uses the IGN grid (be_ign_bd72lb72_etrs89lb08.tif), not Helmert 15748.
+UPDATE "main"."grid_transformation"
+SET "name" = 'BD72 to ETRS89 (3)',
+    "target_crs_auth_name" = 'EPSG',
+    "target_crs_code" = '4258'
+WHERE "auth_name" = 'EPSG' AND "code" = '8369';
+
 -- Update the extend for Czechia to transform point correctly near the south border.
 UPDATE "main"."extent"
 SET "south_lat" = 48.55
