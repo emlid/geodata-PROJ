@@ -30,10 +30,6 @@ file(GLOB GEOTIFF_FILES *.tif)
 set(ALL_SQL_IN "${CMAKE_CURRENT_BINARY_DIR}/all.sql.in")
 set(PROJ_DB "${CMAKE_CURRENT_BINARY_DIR}/proj.db")
 
-option(PROJ_ENABLE_PATCH
-  " APPEND THE PATCH WITH CUSTOM CRS to proj.db  Excluded when PROJ_ENABLE_PATCH=OFF."
-  ON)
-
 option(PROJ_DB_FINAL_CONSISTENCY_CHECKS
   "Run final_consistency_checks.sql when building proj.db (slower; fails on intentional PROJ/EPSG grid duplicates unless codes use _RESTRICTED_TO_VERTCRS)."
   OFF)
@@ -41,7 +37,7 @@ option(PROJ_DB_FINAL_CONSISTENCY_CHECKS
 set(PROJ_DB_EXTRA_VALIDATION ${PROJ_DB_FINAL_CONSISTENCY_CHECKS})
 include(sql_filelist.cmake)
 
-set(PROJ_DB_SQL_EXPECTED_MD5 "9455c980690b4db7918d2700c1ffc716")
+set(PROJ_DB_SQL_EXPECTED_MD5 "c9c9ebc65488351c3496de2ce31d87b8")
 
 add_custom_command(
   OUTPUT ${PROJ_DB}

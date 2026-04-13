@@ -1,4 +1,6 @@
--- This patch: applies only if PROJ_ENABLE_PATCH=ON.
+-- Geodata / Emlid registry patches (PROJ_ENABLE_PATCH=ON).
+-- Loaded last (after grid_alternatives.sql, customizations.sql, nkg_post_customizations.sql)
+-- so stock SQL cannot overwrite these rows. Formerly data/sql/emlid_grids.sql mid-pipeline.
 -- _RESTRICTED_TO_VERTCRS allows overlap with existing EPSG grid_transformation rows, so final_consistency_checks.sql pass.
 
 INSERT OR IGNORE INTO builtin_authorities VALUES('CUSTOM');
@@ -367,6 +369,18 @@ VALUES
     ('CUSTOM', 'CUSTOM_HTRS07_3D_TO_CUSTOM_GREEKGEOID2010H_1', 'grid_transformation', 'PROJ', 'CUSTOM_HTRS07_3D_TO_CUSTOM_GREEKGEOID2010H_1', 'EPSG', '1106', 'EPSG', '1024'),
     ('CUSTOM', '6695', 'vertical_crs', 'EPSG', '6695', 'EPSG', '3957', 'EPSG', '1024'),
     ('CUSTOM', 'EPSG_6667_TO_EPSG_6695', 'grid_transformation', 'PROJ', 'EPSG_6667_TO_EPSG_6695', 'EPSG', '3957', 'EPSG', '1024');
+
+-- Decrease the accuracy of Slovak transformation to Baltic 1957 to prioritize the Czech transformation, which has an accuracy of 0.05.
+-- Otherwise, the Slovak transformation is used in some parts of Czechia, leading to inaccurate results. It affects only the legacy registry,
+-- so in the new one, the Slovak transformation works accurately, while for Czech we don't have this transformation in the new registry yet.
+-- UPDATE "main"."grid_transformation"
+-- SET "accuracy" = 0.051
+-- WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361');
+
+-- Update the extend for Czechia to transform point correctly near the south border.
+-- UPDATE "main"."extent"
+-- SET "south_lat" = 48.55
+-- WHERE "auth_name" = 'EPSG' AND "code" = '1079';
 
 -- Update the name for Czech CS according to the local requirements
 UPDATE "main"."projected_crs"
