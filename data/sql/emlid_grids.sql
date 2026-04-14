@@ -22,8 +22,7 @@ VALUES
     ('PROJ', 'EPSG_4237_TO_EPSG_4258_1', 'HD72 to ETRS89', 'EPSG', '9615', 'NTv2', 'EPSG', '4237', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'etrs2eov_notowgs.gsb', 0),
     ('PROJ', 'EPSG_4230_TO_EPSG_4258_1', 'ED50 to ETRS89', 'EPSG', '9615', 'NTv2', 'EPSG', '4230', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'italy_ed50.tif', 0),
     ('PROJ', 'EPSG_4265_TO_EPSG_4258_1', 'Monte Mario to ETRS89', 'EPSG', '9615', 'NTv2', 'EPSG', '4265', 'EPSG', '4258', '0.0', 'EPSG', '8656', 'Latitude and longitude difference file', 'roma40.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_EPSG_5705_1', 'ETRS89 to Baltic 1977 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5705', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'GEORG12.tif', 0),
-    ('PROJ', 'EPSG_4937_TO_EPSG_8357_CZ_CR2005', 'ETRS89 to Baltic 1957 height (Czechia)', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '8357', 0.03, 'EPSG', '8666', 'Geoid (height correction) model file', 'CR2005_GTX.gtx', 0);
+    ('PROJ', 'EPSG_4937_TO_EPSG_5705_1', 'ETRS89 to Baltic 1977 height', 'EPSG', '9665', 'Geographic3D to GravityRelatedHeight (gtx)', 'EPSG', '4937', 'EPSG', '5705', '999', 'EPSG', '8666', 'Geoid (height correction) model file', 'GEORG12.tif', 0);
 
 INSERT INTO "main"."usage"
 ("auth_name", "code", "object_table_name", "object_auth_name", "object_code", "extent_auth_name", "extent_code", "scope_auth_name", "scope_code")
@@ -45,8 +44,7 @@ VALUES
     ('CUSTOM', '1014', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5728_1', 'EPSG', '1286', 'EPSG', '1024'),
     ('CUSTOM', '1015', 'grid_transformation', 'PROJ', 'EPSG_4230_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024'),
     ('CUSTOM', '1016', 'grid_transformation', 'PROJ', 'EPSG_4265_TO_EPSG_4258_1', 'EPSG', '1127', 'EPSG', '1024'),
-    ('CUSTOM', '1017', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5705_1', 'EPSG', '3251', 'EPSG', '1024'),
-    ('CUSTOM', '1018', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_8357_CZ_CR2005', 'EPSG', '1079', 'EPSG', '1133');
+    ('CUSTOM', '1017', 'grid_transformation', 'PROJ', 'EPSG_4937_TO_EPSG_5705_1', 'EPSG', '3251', 'EPSG', '1024');
 
 INSERT INTO "main"."grid_alternatives"
 ("original_grid_name", "proj_grid_name", "proj_grid_format", "proj_method", "inverse_direction", "url", "direct_download", "open_license")
@@ -369,13 +367,6 @@ VALUES
     ('CUSTOM', '6695', 'vertical_crs', 'EPSG', '6695', 'EPSG', '3957', 'EPSG', '1024'),
     ('CUSTOM', 'EPSG_6667_TO_EPSG_6695', 'grid_transformation', 'PROJ', 'EPSG_6667_TO_EPSG_6695', 'EPSG', '3957', 'EPSG', '1024');
 
--- Demote Slovak 4937 -> Baltic 1957 (via EPSG:8360) so Czech territory prefers the Czech geoid path:
--- EPSG:10567 is 11069 -> 8357 only; compound 4258+8357 needs a direct 4937 -> 8357 grid (PROJ:EPSG_4937_TO_EPSG_8357_CZ_CR2005 above).
--- EPSG:8361 and its PROJ vertical-only clone must stay looser than that Czech row (0.03 m).
-UPDATE "main"."grid_transformation"
-SET "accuracy" = 0.051
-WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361_RESTRICTED_TO_VERTCRS');
-
 -- EPSG registers 8369 as BD72 (4313) -> ETRS89-BEL (11215). Tie the NTv2 grid to EPSG:4258 instead so
 -- EPSG:4258 <-> BD72 / Belgian Lambert 72 (31370) uses the IGN grid (be_ign_bd72lb72_etrs89lb08.tif), not Helmert 15748.
 UPDATE "main"."grid_transformation"
@@ -397,3 +388,66 @@ WHERE "auth_name" = 'EPSG' AND "code" = '5514';
 UPDATE "main"."vertical_crs"
 SET "name" = 'Czech_CR-2005_v1005'
 WHERE "auth_name" = 'EPSG' AND "code" = '8357';
+
+-- Patch proj.db: prefer Czech CR-2005 geoid for EPSG:4937 -> EPSG:8357 inside Czechia.
+-- Upstream/EPSG ships EPSG:10567 (source 11069) and PROJ RESTRICTED 4937->8357 using the
+-- Slovak Baltic grid; compound 4258 + 5514 + 8357 then picked the wrong vertical step.
+-- Kept at end of this file so nothing earlier in emlid_grids.sql overwrites it; build order
+-- (sql_filelist.cmake) has no later SQL that updates these rows.
+DELETE FROM "main"."usage" WHERE object_table_name = 'grid_transformation' AND object_auth_name = 'PROJ' AND object_code = 'EPSG_4937_TO_EPSG_8357_CZ_CR2005';
+DELETE FROM "main"."grid_transformation" WHERE auth_name = 'PROJ' AND code = 'EPSG_4937_TO_EPSG_8357_CZ_CR2005';
+
+-- Demote Slovak 4937->8360 / restricted-vert paths so Czech 0.03 wins where both compete.
+UPDATE "main"."grid_transformation" SET accuracy = 0.15
+WHERE auth_name = 'EPSG' AND code = '8361';
+
+UPDATE "main"."grid_transformation" SET accuracy = 0.15
+WHERE auth_name = 'PROJ' AND code = 'EPSG_8361_RESTRICTED_TO_VERTCRS';
+
+INSERT INTO "main"."grid_transformation" (
+  auth_name, code, name, description,
+  method_auth_name, method_code, method_name,
+  source_crs_auth_name, source_crs_code,
+  target_crs_auth_name, target_crs_code,
+  accuracy,
+  grid_param_auth_name, grid_param_code, grid_param_name, grid_name,
+  grid2_param_auth_name, grid2_param_code, grid2_param_name, grid2_name,
+  param1_auth_name, param1_code, param1_name, param1_value, param1_uom_auth_name, param1_uom_code,
+  param2_auth_name, param2_code, param2_name, param2_value, param2_uom_auth_name, param2_uom_code,
+  interpolation_crs_auth_name, interpolation_crs_code,
+  operation_version,
+  deprecated
+) VALUES (
+  'PROJ','EPSG_4937_TO_EPSG_8357_CZ_CR2005',
+  'ETRS89 to Baltic 1957 height (Czechia, CR-2005)',
+  NULL,
+  'EPSG','9665','Geographic3D to GravityRelatedHeight (gtx)',
+  'EPSG','4937','EPSG','8357',
+  0.03,
+  'EPSG','8666','Geoid (height correction) model file','CR2005_GTX.gtx',
+  NULL,NULL,NULL,NULL,
+  NULL,NULL,NULL,NULL,NULL,NULL,
+  NULL,NULL,NULL,NULL,NULL,NULL,
+  NULL,NULL,
+  'cuzk-Cze 2005',
+  0
+);
+
+INSERT INTO "main"."usage" VALUES(
+  'CUSTOM','1018',
+  'grid_transformation',
+  'PROJ',
+  'EPSG_4937_TO_EPSG_8357_CZ_CR2005',
+  'EPSG','1079',
+  'EPSG','1024'
+);
+
+-- Align Czech JTSK/JTSK05 gridshift with Emlid-shipped `cz_cuzk_table_yx_3_v1710_east_north.tif`
+-- (see gc-data/griddata.json). Fork `transformations_czechia.sql` still referenced `-y-x` CDN name.
+UPDATE "main"."other_transformation"
+SET method_name = REPLACE(
+  method_name,
+  'cz_cuzk_table_-y-x_3_v1710.tif',
+  'cz_cuzk_table_yx_3_v1710_east_north.tif'
+)
+WHERE auth_name = 'PROJ' AND method_name LIKE '%cz_cuzk_table_-y-x_3_v1710.tif%';
