@@ -372,7 +372,7 @@ VALUES
 -- so in the new one, the Slovak transformation works accurately, while for Czech we don't have this transformation in the new registry yet.
 UPDATE "main"."grid_transformation"
 SET "accuracy" = 0.051
-WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361');
+WHERE ("auth_name" = 'EPSG' AND "code" = '8361') OR ("auth_name" = 'PROJ' AND "code" = 'EPSG_8361_RESTRICTED_TO_VERTCRS');
 
 -- EPSG registers 8369 as BD72 (4313) -> ETRS89-BEL (11215). Tie the NTv2 grid to EPSG:4258 instead so
 -- EPSG:4258 <-> BD72 / Belgian Lambert 72 (31370) uses the IGN grid (be_ign_bd72lb72_etrs89lb08.tif), not Helmert 15748.
