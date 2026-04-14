@@ -57,7 +57,21 @@ list(APPEND SQL_FILES
   "${SQL_DIR}/nrcan.sql"
   "${SQL_DIR}/transformations_czechia.sql"
 )
-list(APPEND SQL_FILES "${SQL_DIR}/emlid_grids.sql")
+list(APPEND SQL_FILES
+# "${SQL_DIR}/emlid_grids.sql"
+  "${SQL_DIR}/modify-projdb.sql"
+  "${SQL_DIR}/belgium.sql"
+  "${SQL_DIR}/brazil.sql"
+  "${SQL_DIR}/colombia.sql"
+  "${SQL_DIR}/france.sql"
+  "${SQL_DIR}/georgia.sql"
+  "${SQL_DIR}/greece.sql"
+  "${SQL_DIR}/japan.sql"
+  "${SQL_DIR}/portugal.sql"
+  "${SQL_DIR}/south-africa.sql"
+  "${SQL_DIR}/south-korea.sql"
+  "${SQL_DIR}/usa.sql"
+)
 list(APPEND SQL_FILES
   "${SQL_DIR}/grid_alternatives.sql"
   "${SQL_DIR}/grid_alternatives_generated_noaa.sql"
