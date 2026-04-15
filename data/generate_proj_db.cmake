@@ -26,15 +26,19 @@ function(generate_all_sql_in ALL_SQL_IN_FILENAME EXTRA_VALIDATION OUT_MD5)
     file(WRITE "${ALL_SQL_IN_FILENAME}" "${CONTENTS_MOD}")
 endfunction()
 
-generate_all_sql_in("${ALL_SQL_IN}" OFF PROJ_DB_SQL_MD5)
+generate_all_sql_in("${ALL_SQL_IN}" "${PROJ_DB_FINAL_CONSISTENCY_CHECKS}" PROJ_DB_SQL_MD5)
 
 file(WRITE "${DATA_BINARY_DIR}/PROJ_DB_SQL_MD5.h" "const char* PROJ_DB_SQL_MD5=\"${PROJ_DB_SQL_MD5}\";\n")
 
 if (NOT "${PROJ_DB_SQL_MD5}" STREQUAL "${PROJ_DB_SQL_EXPECTED_MD5}")
-    message(WARNING "all.sql.in content has changed. Running extra validation checks when building proj.db...")
+    if(PROJ_DB_FINAL_CONSISTENCY_CHECKS)
+        message(WARNING "all.sql.in content has changed. Running proj.db build with final consistency checks...")
+    else()
+        message(WARNING "all.sql.in content has changed. Rebuilding proj.db without final consistency checks (PROJ_DB_FINAL_CONSISTENCY_CHECKS=OFF)...")
+    endif()
 
     set(ALL_SQL_IN_EXTRA_VALIDATION "${ALL_SQL_IN}.extra_validation")
-    generate_all_sql_in("${ALL_SQL_IN_EXTRA_VALIDATION}" ON PROJ_DB_SQL_EXTRA_VALIDATION_MD5)
+    generate_all_sql_in("${ALL_SQL_IN_EXTRA_VALIDATION}" "${PROJ_DB_FINAL_CONSISTENCY_CHECKS}" PROJ_DB_SQL_EXTRA_VALIDATION_MD5)
 
     set(PROJ_DB_EXTRA_VALIDATION_FILENAME "${PROJ_DB}.extra_validation")
     file(REMOVE "${PROJ_DB_EXTRA_VALIDATION_FILENAME}")
